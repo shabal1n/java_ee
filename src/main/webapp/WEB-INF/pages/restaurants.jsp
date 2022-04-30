@@ -70,7 +70,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/map">Map</a>
+                                <a class="nav-link" href="map">Map</a>
                             </li>
                         </ul>
                     </div>
