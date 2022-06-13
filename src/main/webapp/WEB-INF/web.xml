@@ -3,16 +3,44 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <display-name>Bookout</display-name>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
     <servlet>
         <servlet-name>ReservationController</servlet-name>
         <servlet-class>com.bookout.controller.ReservationServiceController</servlet-class>
         <load-on-startup>0</load-on-startup>
+        <multipart-config>
+            <max-file-size>20971520</max-file-size>
+            <max-request-size>20971520</max-request-size>
+            <file-size-threshold>20971520</file-size-threshold>
+        </multipart-config>
     </servlet>
     <servlet-mapping>
         <servlet-name>ReservationController</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.jpg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.png</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.ico</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>Language</filter-name>
+        <filter-class>com.bookout.filters.LanguageFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Language</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>
 

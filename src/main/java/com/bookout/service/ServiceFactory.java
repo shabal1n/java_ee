@@ -10,8 +10,10 @@ public class ServiceFactory {
     static {
         SERVICE_MAP.put("/error", new ErrorService());
         SERVICE_MAP.put("/map", new MapService());
-        SERVICE_MAP.put("/restaurant", new RestaurantsService());
+        SERVICE_MAP.put("/restaurants", new RestaurantsService());
         SERVICE_MAP.put("/categories", new CategoriesService());
+        SERVICE_MAP.put("/login", new LoginService());
+        SERVICE_MAP.put("/registration", new RegistrationService());
     }
 
     public static ServiceFactory getInstance() {
