@@ -57,11 +57,11 @@
                                     <fmt:message key="button.categories"/>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category/italian"><fmt:message key="button.italian"/></a>
-                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category/japanese"><fmt:message key="button.japanese"/></a>
-                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category/japanese"><fmt:message key="button.european"/></a>
-                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category/japanese"><fmt:message key="button.asian"/></a>
-                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category/japanese"><fmt:message key="button.coffee"/></a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category?category_name=italian"><fmt:message key="button.italian"/></a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category?category_name=japanese"><fmt:message key="button.japanese"/></a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category?category_name=european"><fmt:message key="button.european"/></a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category?category_name=asian"><fmt:message key="button.asian"/></a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category?category_name=coffee"><fmt:message key="button.coffee"/></a>
                                 </div>
                             </li>
                             <li class="nav-item">

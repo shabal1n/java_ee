@@ -29,22 +29,15 @@
                         <div class="col-lg-7">
                             <div class="about_text">
                                 <h5><fmt:message key="label.top"/></h5>
-                                <h2>*Restaurant name*</h2>
-                                <p>
-                                    Good lights it very to above. Days image to sea. Over
-                                    there seasons and spirit beast in. Greater bearing
-                                    creepeth very behold fourth night morning seed moved.
-                                </p>
-                                <p>
-                                    Good lights it very to above. Days image to sea. Over
-                                    seasons and spirit beast in over greater bearing creepeth.
-                                </p>
+                                <h2>${top1.getName()}</h2>
+                                <p>${top1.getAddress()}</p>
+                                <h5>Rating: ${top1.getRating()}</h5>
                                 <a href="#" class="btn_3">Book a table</a>
                             </div>
                         </div>
                         <div class="col-lg-5">
                             <div class="about_img">
-                                <img src="res/img/about.png" alt=""/>
+                                <img src="${top1.getImageUrl()}" alt=""/>
                             </div>
                         </div>
                     </div>
@@ -67,64 +60,19 @@
             <div class="col-lg-12">
                 <div class="single-member">
                     <div class="row">
-                        <div class="col-sm-6 col-lg-6">
-                            <div class="single_food_item media">
-                                <img src="res/img/food_menu/single_food_1.png"
-                                     class="img-responsive" alt="..."/>
-                                <div class="media-body align-self-center">
-                                    <h3>Pork Sandwich</h3>
-                                    <p>They're wherein heaven seed hath nothing</p>
-                                    <h5>Form $40.00</h5>
+                        <c:forEach var="restaurant" items="${top6}">
+                            <div class="col-sm-6">
+                                <div class="single_food_item media">
+                                    <img src="${restaurant.getImageUrl()}"
+                                         class="img-responsive" alt="...">
+                                    <div class="media-body align-self-center">
+                                        <h3>${restaurant.getName()}</h3>
+                                        <p>${restaurant.getAddress()}</p>
+                                        <h5>Rating: ${restaurant.getRating()}</h5>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="single_food_item media">
-                                <img src="res/img/food_menu/single_food_2.png"
-                                     class="img-responsive" alt="..."/>
-                                <div class="media-body align-self-center">
-                                    <h3>Roasted Marrow</h3>
-                                    <p>They're wherein heaven seed hath nothing</p>
-                                    <h5>Form $40.00</h5>
-                                </div>
-                            </div>
-                            <div class="single_food_item media">
-                                <img src="res/img/food_menu/single_food_3.png"
-                                     class="img-responsive" alt="..."/>
-                                <div class="media-body align-self-center">
-                                    <h3>Summer Cooking</h3>
-                                    <p>They're wherein heaven seed hath nothing</p>
-                                    <h5>Form $40.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-6">
-                            <div class="single_food_item media">
-                                <img src="res/img/food_menu/single_food_4.png"
-                                     class="img-responsive" alt="..."/>
-                                <div class="media-body align-self-center">
-                                    <h3>Easter Delight</h3>
-                                    <p>They're wherein heaven seed hath nothing</p>
-                                    <h5>Form $40.00</h5>
-                                </div>
-                            </div>
-                            <div class="single_food_item media">
-                                <img src="res/img/food_menu/single_food_5.png"
-                                     class="img-responsive" alt="..."/>
-                                <div class="media-body align-self-center">
-                                    <h3>Tiener Schnitze</h3>
-                                    <p>They're wherein heaven seed hath nothing</p>
-                                    <h5>Form $40.00</h5>
-                                </div>
-                            </div>
-                            <div class="single_food_item media">
-                                <img src="res/img/food_menu/single_food_6.png"
-                                     class="img-responsive" alt="..."/>
-                                <div class="media-body align-self-center">
-                                    <h3>Chicken Roast</h3>
-                                    <p>They're wherein heaven seed hath nothing</p>
-                                    <h5>Form $40.00</h5>
-                                </div>
-                            </div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
