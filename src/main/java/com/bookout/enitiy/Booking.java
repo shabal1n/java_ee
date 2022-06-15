@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class Booking implements Serializable {
     private int id;
-    private int user_id;
-    private int restaurant_id;
+    private int userId;
+    private int restaurantId;
     private String date;
-    private int num_of_persons;
+    private int numOfPersons;
 
     public int getId() {
         return id;
@@ -17,20 +17,20 @@ public class Booking implements Serializable {
         this.id = id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getRestaurant_id() {
-        return restaurant_id;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setRestaurant_id(int restaurant_id) {
-        this.restaurant_id = restaurant_id;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public String getDate() {
@@ -41,11 +41,11 @@ public class Booking implements Serializable {
         this.date = date;
     }
 
-    public int getNum_of_persons() {
-        return num_of_persons;
+    public int getNumOfPersons() {
+        return numOfPersons;
     }
 
-    public void setNum_of_persons(int num_of_persons) {
-        this.num_of_persons = num_of_persons;
+    public void setNumOfPersons(int numOfPersons) {
+        this.numOfPersons = numOfPersons;
     }
 }

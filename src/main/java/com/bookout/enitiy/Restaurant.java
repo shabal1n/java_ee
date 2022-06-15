@@ -4,12 +4,32 @@ import java.io.Serializable;
 
 public class Restaurant implements Serializable {
     private int id;
-    private int category_id;
+    private int categoryId;
     private String name;
+
+    private String image;
     private String address;
     private int capacity;
     private double rating;
-    private int curr_free_space;
+    private int currFreeSpace;
+
+    public String getImageUrl() {
+        return image;
+    }
+
+    public void setImageUrl(String image) {
+        this.image = image;
+    }
+
+    public int getLocalId() {
+        return localId;
+    }
+
+    public void setLocalId(int localId) {
+        this.localId = localId;
+    }
+
+    private int localId;
 
     public int getId() {
         return id;
@@ -19,12 +39,12 @@ public class Restaurant implements Serializable {
         this.id = id;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {
@@ -59,11 +79,11 @@ public class Restaurant implements Serializable {
         this.rating = rating;
     }
 
-    public int getCurr_free_space() {
-        return curr_free_space;
+    public int getCurrFreeSpace() {
+        return currFreeSpace;
     }
 
-    public void setCurr_free_space(int curr_free_space) {
-        this.curr_free_space = curr_free_space;
+    public void setCurrFreeSpace(int currFreeSpace) {
+        this.currFreeSpace = currFreeSpace;
     }
 }

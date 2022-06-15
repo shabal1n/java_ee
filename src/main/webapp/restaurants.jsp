@@ -1,4 +1,4 @@
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -33,64 +33,20 @@
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div class="single-member">
-                    <div class="row">
-                        <div class="col-sm-6 col-lg-6">
-                            <div class="single_food_item media">
-                                <img src="res/img/food_menu/single_food_1.png"
-                                     class="img-responsive" alt="...">
-                                <div class="media-body align-self-center">
-                                    <h3>Pork Sandwich</h3>
-                                    <p>They're wherein heaven seed hath nothing</p>
-                                    <h5>Form $40.00</h5>
+                    <div class="row restaurant_item_row">
+                        <c:forEach var="restaurant" items="${restaurants}">
+                            <div class="col-sm-6">
+                                <div class="single_food_item media">
+                                    <img src="${restaurant.getImageUrl()}"
+                                         class="img-responsive" alt="...">
+                                    <div class="media-body align-self-center">
+                                        <h3>${restaurant.getName()}</h3>
+                                        <p>${restaurant.getAddress()}</p>
+                                        <h5>Rating: ${restaurant.getRating()}</h5>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="single_food_item media">
-                                <img src="res/img/food_menu/single_food_2.png"
-                                     class="img-responsive" alt="...">
-                                <div class="media-body align-self-center">
-                                    <h3>Roasted Marrow</h3>
-                                    <p>They're wherein heaven seed hath nothing</p>
-                                    <h5>Form $40.00</h5>
-                                </div>
-                            </div>
-                            <div class="single_food_item media">
-                                <img src="res/img/food_menu/single_food_3.png"
-                                     class="img-responsive" alt="...">
-                                <div class="media-body align-self-center">
-                                    <h3>Summer Cooking</h3>
-                                    <p>They're wherein heaven seed hath nothing</p>
-                                    <h5>Form $40.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-6">
-                            <div class="single_food_item media">
-                                <img src="res/img/food_menu/single_food_4.png"
-                                     class="img-responsive" alt="...">
-                                <div class="media-body align-self-center">
-                                    <h3>Easter Delight</h3>
-                                    <p>They're wherein heaven seed hath nothing</p>
-                                    <h5>Form $40.00</h5>
-                                </div>
-                            </div>
-                            <div class="single_food_item media">
-                                <img src="res/img/food_menu/single_food_5.png"
-                                     class="img-responsive" alt="...">
-                                <div class="media-body align-self-center">
-                                    <h3>Tiener Schnitze</h3>
-                                    <p>They're wherein heaven seed hath nothing</p>
-                                    <h5>Form $40.00</h5>
-                                </div>
-                            </div>
-                            <div class="single_food_item media">
-                                <img src="res/img/food_menu/single_food_6.png"
-                                     class="img-responsive" alt="...">
-                                <div class="media-body align-self-center">
-                                    <h3>Chicken Roast</h3>
-                                    <p>They're wherein heaven seed hath nothing</p>
-                                    <h5>Form $40.00</h5>
-                                </div>
-                            </div>
+                        </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -102,4 +58,4 @@
 </body>
 
 </html>
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>

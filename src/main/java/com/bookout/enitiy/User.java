@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private long id;
-    private String first_name;
-    private String last_name;
+    private String firstName;
     private String mobile;
     private String email;
-    private String password_hash;
-    private String local_id;
+    private String passwordHash;
+    private int localId;
+    private boolean isAdmin;
 
     public long getId() {
         return id;
@@ -19,20 +19,12 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getMobile() {
@@ -51,19 +43,27 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getPassword_hash() {
-        return password_hash;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPassword_hash(String password_hash) {
-        this.password_hash = password_hash;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
-    public String getLocal_id() {
-        return local_id;
+    public int getLocalId() {
+        return localId;
     }
 
-    public void setLocal_id(String local_id) {
-        this.local_id = local_id;
+    public void setLocalId(int localId) {
+        this.localId = localId;
+    }
+
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

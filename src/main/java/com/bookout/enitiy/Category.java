@@ -6,6 +6,8 @@ public class Category implements Serializable {
     private int id;
     private int name;
 
+    private int localId;
+
     public int getId() {
         return id;
     }

@@ -1,12 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: arturshabalin
-  Date: 13.06.2022
-  Time: 10:53
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%@ page session="true" %>
+<%@ page isELIgnored="false" %>
+
+<fmt:setBundle basename="language"/>
+<fmt:setLocale value="${sessionScope.language}" scope="session"/>
+
+<html lang="${sessionScope.language}">
 <head>
     <style>
         section {
@@ -29,7 +31,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"><fmt:message key="registration.head"/></p>
 
                                 <form class="mx-1 mx-md-4">
 
@@ -37,7 +39,7 @@
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="text" id="form3Name" class="form-control" required/>
-                                            <label class="form-label" for="form3Name">Your Name</label>
+                                            <label class="form-label" for="form3Name"><fmt:message key="registration.name"/></label>
                                         </div>
                                     </div>
 
@@ -45,7 +47,7 @@
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="email" id="form3Email" class="form-control" required/>
-                                            <label class="form-label" for="form3Email">Your Email</label>
+                                            <label class="form-label" for="form3Email"><fmt:message key="registration.email"/></label>
                                         </div>
                                     </div>
 
@@ -53,7 +55,7 @@
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="tel" id="form4Phone" class="form-control" pattern="+7[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="+7" required/>
-                                            <label class="form-label" for="form4Phone">Your Phone</label>
+                                            <label class="form-label" for="form4Phone"><fmt:message key="registration.phone"/></label>
                                         </div>
                                     </div>
 
@@ -61,7 +63,7 @@
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="password" id="form3Password" class="form-control" required/>
-                                            <label class="form-label" for="form3Password">Password</label>
+                                            <label class="form-label" for="form3Password"><fmt:message key="login.password"/></label>
                                         </div>
                                     </div>
 
@@ -69,12 +71,12 @@
                                         <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="password" id="form3Password2" class="form-control" required/>
-                                            <label class="form-label" for="form3Password2">Repeat your password</label>
+                                            <label class="form-label" for="form3Password2"><fmt:message key="registration.repeat"/></label>
                                         </div>
                                     </div>
 
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <button type="button" class="btn btn-primary btn-lg" onclick="validation()">Register</button>
+                                        <button type="button" class="btn btn-primary btn-lg" onclick="validation()"><fmt:message key="login.register"/></button>
                                     </div>
 
                                 </form>

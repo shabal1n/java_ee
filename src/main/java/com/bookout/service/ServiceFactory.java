@@ -1,9 +1,13 @@
 package com.bookout.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class ServiceFactory {
+    private static final Logger LOGGER = LogManager.getLogger(ServiceFactory.class);
     private static final Map<String, Service> SERVICE_MAP = new HashMap<>();
     private static final ServiceFactory SERVICE_FACTORY = new ServiceFactory();
 

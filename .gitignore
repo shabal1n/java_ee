@@ -41,3 +41,4 @@ build/
 ### Mac OS ###
 .DS_Store
 /apache-tomcat-9.0.64/
+/logs/text.log

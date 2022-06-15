@@ -3,6 +3,11 @@
 /**************** common css start ****************/
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400|Playfair+Display:400,700,900&display=swap");
 
+.restaurant_item_row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
 /* line 3, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_common.scss */
 body {
   font-family: "Montserrat", sans-serif;

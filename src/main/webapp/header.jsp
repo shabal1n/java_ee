@@ -3,6 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<%@page import="java.util.List"%>
+
 <%@ page session="true" %>
 <%@ page isELIgnored="false" %>
 
@@ -44,23 +46,26 @@
                          id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="/"><fmt:message key="button.home"/></a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/"><fmt:message key="button.home"/></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="restaurants"><fmt:message key="button.restaurants"/></a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/restaurants"><fmt:message key="button.restaurants"/></a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <fmt:message key="button.categories"/>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="blog.html">Blog</a>
-                                    <a class="dropdown-item" href="single-blog.html">Single blog</a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category/italian"><fmt:message key="button.italian"/></a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category/japanese"><fmt:message key="button.japanese"/></a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category/japanese"><fmt:message key="button.european"/></a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category/japanese"><fmt:message key="button.asian"/></a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/category/japanese"><fmt:message key="button.coffee"/></a>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="map"><fmt:message key="button.map"/></a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/map"><fmt:message key="button.map"/></a>
                             </li>
                         </ul>
                     </div>

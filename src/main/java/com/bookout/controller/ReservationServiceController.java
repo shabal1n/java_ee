@@ -3,8 +3,8 @@ package com.bookout.controller;
 
 import com.bookout.service.Service;
 import com.bookout.service.ServiceFactory;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 import javax.servlet.ServletException;

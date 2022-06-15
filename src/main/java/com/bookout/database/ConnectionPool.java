@@ -1,8 +1,7 @@
 package com.bookout.database;
 
-
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,12 +20,12 @@ public class ConnectionPool {
     private String user;
     private String password;
     private String driverDB;
-    private Properties properties = getProperties("connectionPool.properties");
+    private Properties properties = getProperties("db.properties");
     private final int maxConnection = Integer.parseInt(properties.getProperty("pool.maxConnection"));
     private static ConnectionPool instance = null;
     private BlockingQueue<Connection> freeConnections = new ArrayBlockingQueue<>(maxConnection);
 
-    private ConnectionPool() {
+    protected ConnectionPool() {
         init();
     }
 
@@ -64,15 +63,12 @@ public class ConnectionPool {
     private void loadDrivers() {
         try {
             Driver driver = (Driver) Class.forName(driverDB).newInstance();
-        } catch (InstantiationException e) {
+        } catch (InstantiationException | ClassNotFoundException e) {
             log.warn(e);
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             log.warn(e);
 
-        } catch (ClassNotFoundException e) {
-            log.warn(e);
-            e.printStackTrace();
         }
     }
 
@@ -92,10 +88,7 @@ public class ConnectionPool {
             try {
                 connection = DriverManager.getConnection(url, user, password);
                 freeConnections.put(connection);
-            } catch (InterruptedException e) {
-                log.warn(e);
-                e.printStackTrace();
-            } catch (SQLException e) {
+            } catch (InterruptedException | SQLException e) {
                 log.warn(e);
                 e.printStackTrace();
             }

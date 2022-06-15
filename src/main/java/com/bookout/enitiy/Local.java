@@ -2,7 +2,7 @@ package com.bookout.enitiy;
 
 public class Local {
     private int id;
-    private String short_name;
+    private String shortName;
     private String name;
 
     public int getId() {
@@ -13,12 +13,12 @@ public class Local {
         this.id = id;
     }
 
-    public String getShort_name() {
-        return short_name;
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setShort_name(String short_name) {
-        this.short_name = short_name;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
     public String getName() {
