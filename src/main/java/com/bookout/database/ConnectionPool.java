@@ -29,7 +29,7 @@ public class ConnectionPool {
         init();
     }
 
-    private void init(){
+    private void init() {
         setDataForConnection();
         loadDrivers();
         createConnections();
@@ -42,14 +42,14 @@ public class ConnectionPool {
         return instance;
     }
 
-    private void setDataForConnection(){
+    private void setDataForConnection() {
         this.url = properties.getProperty("pool.url");
         this.password = properties.getProperty("pool.password");
         this.user = properties.getProperty("pool.user");
         this.driverDB = properties.getProperty("pool.driver");
     }
 
-    private Properties getProperties(String configurationFile){
+    private Properties getProperties(String configurationFile) {
         Properties properties = new Properties();
         InputStream inputStream = ConnectionPool.class.getClassLoader().getResourceAsStream(configurationFile);
         try {
@@ -82,9 +82,9 @@ public class ConnectionPool {
         return connection;
     }
 
-    private BlockingQueue<Connection> createConnections(){
+    private BlockingQueue<Connection> createConnections() {
         Connection connection;
-        while(freeConnections.size() < maxConnection){
+        while (freeConnections.size() < maxConnection) {
             try {
                 connection = DriverManager.getConnection(url, user, password);
                 freeConnections.put(connection);
@@ -96,8 +96,8 @@ public class ConnectionPool {
         return freeConnections;
     }
 
-    public synchronized void returnConnection(Connection connection){
-        if ( (connection != null) && (freeConnections.size()<= maxConnection)) {
+    public synchronized void returnConnection(Connection connection) {
+        if ((connection != null) && (freeConnections.size() <= maxConnection)) {
             try {
                 freeConnections.put(connection);
             } catch (InterruptedException e) {

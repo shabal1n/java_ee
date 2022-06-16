@@ -6321,6 +6321,13 @@ h6 {
   background-size: cover;
 }
 
+.breadcrumb_bg2 {
+  background-image: url("../img/booking_tabel_bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* line 4, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_breadcrumb.scss */
 .breadcrumb {
   position: relative;

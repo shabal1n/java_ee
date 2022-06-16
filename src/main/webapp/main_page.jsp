@@ -32,7 +32,7 @@
                                 <h2>${top1.getName()}</h2>
                                 <p>${top1.getAddress()}</p>
                                 <h5>Rating: ${top1.getRating()}</h5>
-                                <a href="#" class="btn_3">Book a table</a>
+                                <a href="${pageContext.request.contextPath}/book?id=${top1.getId()}" class="btn_3">Book a table</a>
                             </div>
                         </div>
                         <div class="col-lg-5">
@@ -61,7 +61,7 @@
                 <div class="single-member">
                     <div class="row">
                         <c:forEach var="restaurant" items="${top6}">
-                            <div class="col-sm-6">
+                            <div class="col-sm-6" onclick="location.href='${pageContext.request.contextPath}/book?id=${restaurant.getId()}'">
                                 <div class="single_food_item media">
                                     <img src="${restaurant.getImageUrl()}"
                                          class="img-responsive" alt="...">

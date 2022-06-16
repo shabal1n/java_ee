@@ -21,7 +21,7 @@ import static com.bookout.util.PageNames.MAIN_JSP;
 public class MainService implements Service {
     private static final Logger LOGGER = LogManager.getLogger(RestaurantsService.class);
 
-    RestaurantDAOInterface<Restaurant> restaurantsDAO = new RestaurantDAO();
+    private final RestaurantDAOInterface<Restaurant> restaurantsDAO = new RestaurantDAO();
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {

@@ -9,4 +9,6 @@ public class PageNames {
     public static final String REGISTRATION_JSP = "/registration.jsp";
     public static final String MAIN_JSP = "/main_page.jsp";
 
+    public static final String SINGLE_RESTAURANT = "/single_restaurant.jsp";
+
 }

@@ -19,7 +19,7 @@ import static com.bookout.util.PageNames.CATEGORIES_JSP;
 
 public class CategoriesService implements Service {
     private static final Logger LOGGER = LogManager.getLogger(RestaurantsService.class);
-    RestaurantDAOInterface<Restaurant> restaurantDAO = new RestaurantDAO();
+    private final RestaurantDAOInterface<Restaurant> restaurantDAO = new RestaurantDAO();
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;

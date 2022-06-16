@@ -35,7 +35,7 @@
                 <div class="single-member">
                     <div class="row restaurant_item_row">
                         <c:forEach var="restaurant" items="${restaurants}">
-                            <div class="col-sm-6">
+                            <div class="col-sm-6" onclick="location.href='${pageContext.request.contextPath}/book?id=${restaurant.getId()}'">
                                 <div class="single_food_item media">
                                     <img src="${restaurant.getImageUrl()}"
                                          class="img-responsive" alt="...">

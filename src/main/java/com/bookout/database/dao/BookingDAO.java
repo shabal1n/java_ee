@@ -55,12 +55,17 @@ public class BookingDAO extends ConnectionPool implements BookingDAOInterface<Bo
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
 
-            booking = new Booking();
-            booking.setId(resultSet.getInt("id"));
-            booking.setUserId(resultSet.getInt("user_id"));
-            booking.setRestaurantId(resultSet.getInt("restaurant_id"));
-            booking.setDate(resultSet.getString("date"));
-            booking.setNumOfPersons(resultSet.getInt("num_of_persons"));
+            while (resultSet.next()) {
+                booking = new Booking();
+                booking.setId(resultSet.getInt("id"));
+                booking.setUserId(resultSet.getInt("user_id"));
+                booking.setRestaurantId(resultSet.getInt("restaurant_id"));
+                booking.setDate(resultSet.getString("date"));
+                booking.setNumOfPersons(resultSet.getInt("num_of_persons"));
+            }
+
+            statement.close();
+            returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();
@@ -87,6 +92,9 @@ public class BookingDAO extends ConnectionPool implements BookingDAOInterface<Bo
                 booking.setNumOfPersons(resultSet.getInt("num_of_persons"));
                 list.add(booking);
             }
+
+            statement.close();
+            returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();

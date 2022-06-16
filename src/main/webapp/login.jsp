@@ -32,16 +32,16 @@
 </head>
 <body>
 <div id="registration_container">
-    <form>
+    <form method="POST">
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="email" id="form2Example1" class="form-control"/>
+            <input type="email" id="form2Example1" class="form-control" name="email"/>
             <label class="form-label" for="form2Example1"><fmt:message key="login.email"/></label>
         </div>
 
         <!-- Password input -->
         <div class="form-outline mb-4">
-            <input type="password" id="form2Example2" class="form-control"/>
+            <input type="password" id="form2Example2" class="form-control" name="password"/>
             <label class="form-label" for="form2Example2"><fmt:message key="login.password"/></label>
         </div>
 
@@ -62,7 +62,7 @@
         </div>
 
         <!-- Submit button -->
-        <button type="button" class="btn btn-primary btn-block mb-4"><fmt:message key="login.sign"/></button>
+        <button type="submit" class="btn btn-primary btn-block mb-4"><fmt:message key="login.sign"/></button>
 
         <!-- Register buttons -->
         <div class="text-center">

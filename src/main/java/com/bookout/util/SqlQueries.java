@@ -12,7 +12,7 @@ public class SqlQueries {
             "WHERE id = ?";
     public static final String DELETE_USER = "DELETE FROM user_info WHERE id = ?";
     public static final String FIND_USER_EMAIL = "SELECT * FROM user_info WHERE email = ?";
-    public static final String FIND_USER_PHONE = "SELECT * FROM user_info WHERE phone = ?";
+    public static final String FIND_USER_PHONE = "SELECT * FROM user_info WHERE mobile = ?";
     //RestaurantsDAO queries
     public static final String INSERT_RESTAURANT = "INSERT INTO restaurant(category_id, name, image, address, capacity, rating, curr_free_space, local_id) VALUES" +
             "(?, ?, ?, ?, ?, ?, ?, ?)";

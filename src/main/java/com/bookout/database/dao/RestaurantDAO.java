@@ -38,9 +38,9 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
             stmt.close();
             returnConnection(con);
         } catch (Exception e) {
-            if (con != null) con.close();
             LOGGER.error(e);
         }
+        if (con != null) con.close();
     }
 
     @Override
@@ -53,21 +53,25 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
 
-            restaurant = new Restaurant();
-            restaurant.setId(resultSet.getInt("id"));
-            restaurant.setCategoryId(resultSet.getInt("category_id"));
-            restaurant.setName(resultSet.getString("name"));
-            restaurant.setImageUrl(resultSet.getString("image"));
-            restaurant.setAddress(resultSet.getString("address"));
-            restaurant.setCapacity(resultSet.getInt("capacity"));
-            restaurant.setRating(resultSet.getDouble("rating"));
-            restaurant.setCurrFreeSpace(resultSet.getInt("curr_free_space"));
-            restaurant.setLocalId(resultSet.getInt("local_id"));
+            while (resultSet.next()) {
+                restaurant = new Restaurant();
+                restaurant.setId(resultSet.getInt("id"));
+                restaurant.setCategoryId(resultSet.getInt("category_id"));
+                restaurant.setName(resultSet.getString("name"));
+                restaurant.setImageUrl(resultSet.getString("image"));
+                restaurant.setAddress(resultSet.getString("address"));
+                restaurant.setCapacity(resultSet.getInt("capacity"));
+                restaurant.setRating(resultSet.getDouble("rating"));
+                restaurant.setCurrFreeSpace(resultSet.getInt("curr_free_space"));
+                restaurant.setLocalId(resultSet.getInt("local_id"));
+            }
+            statement.close();
+            returnConnection(conn);
 
         } catch (Exception e) {
-            if (conn != null) conn.close();
             LOGGER.error(e);
         }
+        if (conn != null) conn.close();
         return restaurant;
     }
 
@@ -95,11 +99,13 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
 
                 list.add(restaurant);
             }
+            statement.close();
+            returnConnection(conn);
 
         } catch (Exception e) {
-            if (conn != null) conn.close();
             LOGGER.error(e);
         }
+        if (conn != null) conn.close();
         return list;
     }
 
@@ -123,9 +129,9 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
             returnConnection(conn);
 
         } catch (Exception e) {
-            if (conn != null) conn.close();
             LOGGER.error(e);
         }
+        if (conn != null) conn.close();
     }
 
     @Override
@@ -140,9 +146,9 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
             returnConnection(conn);
 
         } catch (Exception e) {
-            if (conn != null) conn.close();
             LOGGER.error(e);
         }
+        if (conn != null) conn.close();
     }
 
     @Override
@@ -170,11 +176,13 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
 
                 list.add(restaurant);
             }
+            statement.close();
+            returnConnection(conn);
 
         } catch (Exception e) {
-            if (conn != null) conn.close();
             LOGGER.error(e);
         }
+        if (conn != null) conn.close();
         return list;
     }
 
@@ -203,11 +211,13 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
 
                 list.add(restaurant);
             }
+            statement.close();
+            returnConnection(conn);
 
         } catch (Exception e) {
-            if (conn != null) conn.close();
             LOGGER.error(e);
         }
+        if (conn != null) conn.close();
         return list;
     }
 }

@@ -52,15 +52,19 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
 
-            user = new User();
+            while (resultSet.next()) {
+                user = new User();
+                user.setId(resultSet.getLong("id"));
+                user.setFirstName(resultSet.getString("first_name"));
+                user.setEmail(resultSet.getString("email"));
+                user.setMobile(resultSet.getString("mobile"));
+                user.setPasswordHash(resultSet.getString("password_hash"));
+                user.setLocalId(resultSet.getInt("local_id"));
+                user.setIsAdmin(resultSet.getBoolean("isadmin"));
+            }
 
-            user.setId(resultSet.getLong("id"));
-            user.setFirstName(resultSet.getString("first_name"));
-            user.setEmail(resultSet.getString("email"));
-            user.setMobile(resultSet.getString("mobile"));
-            user.setPasswordHash(resultSet.getString("password_hash"));
-            user.setLocalId(resultSet.getInt("local_id"));
-            user.setIsAdmin(resultSet.getBoolean("isadmin"));
+            statement.close();
+            returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();
@@ -91,6 +95,9 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
                 user.setIsAdmin(resultSet.getBoolean("isadmin"));
                 list.add(user);
             }
+
+            statement.close();
+            returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();
@@ -149,15 +156,19 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
             statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
 
-            user = new User();
+            while (resultSet.next()) {
+                user = new User();
+                user.setId(resultSet.getLong("id"));
+                user.setFirstName(resultSet.getString("first_name"));
+                user.setEmail(resultSet.getString("email"));
+                user.setMobile(resultSet.getString("mobile"));
+                user.setPasswordHash(resultSet.getString("password_hash"));
+                user.setLocalId(resultSet.getInt("local_id"));
+                user.setIsAdmin(resultSet.getBoolean("isadmin"));
+            }
 
-            user.setId(resultSet.getLong("id"));
-            user.setFirstName(resultSet.getString("first_name"));
-            user.setEmail(resultSet.getString("email"));
-            user.setMobile(resultSet.getString("mobile"));
-            user.setPasswordHash(resultSet.getString("password_hash"));
-            user.setLocalId(resultSet.getInt("local_id"));
-            user.setIsAdmin(resultSet.getBoolean("isadmin"));
+            statement.close();
+            returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();
@@ -176,15 +187,19 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
             statement.setString(1, phone);
             ResultSet resultSet = statement.executeQuery();
 
-            user = new User();
+            while (resultSet.next()) {
+                user = new User();
+                user.setId(resultSet.getLong("id"));
+                user.setFirstName(resultSet.getString("first_name"));
+                user.setEmail(resultSet.getString("email"));
+                user.setMobile(resultSet.getString("mobile"));
+                user.setPasswordHash(resultSet.getString("password_hash"));
+                user.setLocalId(resultSet.getInt("local_id"));
+                user.setIsAdmin(resultSet.getBoolean("isadmin"));
+            }
 
-            user.setId(resultSet.getLong("id"));
-            user.setFirstName(resultSet.getString("first_name"));
-            user.setEmail(resultSet.getString("email"));
-            user.setMobile(resultSet.getString("mobile"));
-            user.setPasswordHash(resultSet.getString("password_hash"));
-            user.setLocalId(resultSet.getInt("local_id"));
-            user.setIsAdmin(resultSet.getBoolean("isadmin"));
+            statement.close();
+            returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();

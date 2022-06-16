@@ -33,12 +33,12 @@
 
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"><fmt:message key="registration.head"/></p>
 
-                                <form class="mx-1 mx-md-4">
+                                <form class="mx-1 mx-md-4" method="post">
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="text" id="form3Name" class="form-control" required/>
+                                            <input type="text" id="form3Name" class="form-control" name="name" required/>
                                             <label class="form-label" for="form3Name"><fmt:message key="registration.name"/></label>
                                         </div>
                                     </div>
@@ -46,7 +46,7 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="email" id="form3Email" class="form-control" required/>
+                                            <input type="email" id="form3Email" class="form-control" name="email" required/>
                                             <label class="form-label" for="form3Email"><fmt:message key="registration.email"/></label>
                                         </div>
                                     </div>
@@ -54,7 +54,7 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="tel" id="form4Phone" class="form-control" pattern="+7[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="+7" required/>
+                                            <input type="tel" id="form4Phone" class="form-control" pattern="+7[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="+7" name="mobile" required/>
                                             <label class="form-label" for="form4Phone"><fmt:message key="registration.phone"/></label>
                                         </div>
                                     </div>
@@ -62,7 +62,7 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="password" id="form3Password" class="form-control" required/>
+                                            <input type="password" id="form3Password" class="form-control" name="password" required/>
                                             <label class="form-label" for="form3Password"><fmt:message key="login.password"/></label>
                                         </div>
                                     </div>
@@ -76,9 +76,8 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <button type="button" class="btn btn-primary btn-lg" onclick="validation()"><fmt:message key="login.register"/></button>
+                                        <button type="submit" class="btn btn-primary btn-lg" onclick="validation()"><fmt:message key="login.register"/></button>
                                     </div>
-
                                 </form>
                             </div>
                             <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
