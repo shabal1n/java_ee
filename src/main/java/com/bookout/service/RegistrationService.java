@@ -20,7 +20,7 @@ import static com.bookout.util.PageNames.REGISTRATION_JSP;
 
 public class RegistrationService implements Service {
     private static final Logger LOGGER = LogManager.getLogger(RegistrationService.class);
-    UserDAOInterface<User> userDAO = new UserDAO();
+    private final UserDAOInterface<User> userDAO = new UserDAO();
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;

@@ -29,8 +29,13 @@
                                 <div class="media-body align-self-center">
                                     <h3>${restaurant.getName()}</h3>
                                     <p>${restaurant.getAddress()}</p>
-                                    <h5>Rating: ${restaurant.getRating()}</h5>
+                                    <h5><fmt:message key="restaurant.rating"/> ${restaurant.getRating()}</h5>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="single_food_item media">
+                               <h3><fmt:message key="restaurant.available"/></h3>
                             </div>
                         </div>
                     </div>

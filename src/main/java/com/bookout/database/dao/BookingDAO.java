@@ -14,7 +14,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookingDAO extends ConnectionPool implements BookingDAOInterface<Booking> {
+import static com.bookout.util.SqlQueries.connectionPool;
+
+public class BookingDAO implements BookingDAOInterface<Booking> {
     private static final Logger LOGGER = LogManager.getLogger(BookingDAO.class);
 
     @Override
@@ -26,7 +28,7 @@ public class BookingDAO extends ConnectionPool implements BookingDAOInterface<Bo
     public void create(Booking booking) throws SQLException {
         Connection con = null;
         try {
-            con = getConnection();
+            con = connectionPool.getConnection();
             PreparedStatement stmt = con.prepareStatement(SqlQueries.INSERT_BOOKING);
             stmt.setInt(1, booking.getUserId());
             stmt.setInt(2, booking.getRestaurantId());
@@ -38,7 +40,7 @@ public class BookingDAO extends ConnectionPool implements BookingDAOInterface<Bo
                 throw new SQLException("Inserted " + row_counter + " rows");
 
             stmt.close();
-            returnConnection(con);
+            connectionPool.returnConnection(con);
         } catch (Exception e) {
             if (con != null) con.close();
             LOGGER.error(e);
@@ -50,7 +52,7 @@ public class BookingDAO extends ConnectionPool implements BookingDAOInterface<Bo
         Connection conn = null;
         Booking booking = null;
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_BOOKING);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -65,7 +67,7 @@ public class BookingDAO extends ConnectionPool implements BookingDAOInterface<Bo
             }
 
             statement.close();
-            returnConnection(conn);
+            connectionPool.returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();
@@ -79,7 +81,7 @@ public class BookingDAO extends ConnectionPool implements BookingDAOInterface<Bo
         Connection conn = null;
         List<Booking> list = new ArrayList<>();
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_ALL_BOOKINGS);
             ResultSet resultSet = statement.executeQuery();
 
@@ -94,8 +96,7 @@ public class BookingDAO extends ConnectionPool implements BookingDAOInterface<Bo
             }
 
             statement.close();
-            returnConnection(conn);
-
+            connectionPool.returnConnection(conn);
         } catch (Exception e) {
             if (conn != null) conn.close();
             LOGGER.error(e);
@@ -105,11 +106,6 @@ public class BookingDAO extends ConnectionPool implements BookingDAOInterface<Bo
 
     @Override
     public void update(Booking booking) throws SQLException {
-
-    }
-
-    @Override
-    public void delete(Booking booking) throws SQLException {
 
     }
 }

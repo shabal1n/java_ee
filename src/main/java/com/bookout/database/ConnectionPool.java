@@ -20,10 +20,10 @@ public class ConnectionPool {
     private String user;
     private String password;
     private String driverDB;
-    private Properties properties = getProperties("db.properties");
+    private final Properties properties = getProperties("db.properties");
     private final int maxConnection = Integer.parseInt(properties.getProperty("pool.maxConnection"));
     private static ConnectionPool instance = null;
-    private BlockingQueue<Connection> freeConnections = new ArrayBlockingQueue<>(maxConnection);
+    private final BlockingQueue<Connection> freeConnections = new ArrayBlockingQueue<>(maxConnection);
 
     protected ConnectionPool() {
         init();
@@ -68,7 +68,6 @@ public class ConnectionPool {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             log.warn(e);
-
         }
     }
 
@@ -83,14 +82,16 @@ public class ConnectionPool {
     }
 
     private BlockingQueue<Connection> createConnections() {
-        Connection connection;
-        while (freeConnections.size() < maxConnection) {
-            try {
-                connection = DriverManager.getConnection(url, user, password);
-                freeConnections.put(connection);
-            } catch (InterruptedException | SQLException e) {
-                log.warn(e);
-                e.printStackTrace();
+        if (freeConnections.isEmpty()) {
+            Connection connection;
+            while (freeConnections.size() < maxConnection) {
+                try {
+                    connection = DriverManager.getConnection(url, user, password);
+                    freeConnections.put(connection);
+                } catch (InterruptedException | SQLException e) {
+                    log.warn(e);
+                    e.printStackTrace();
+                }
             }
         }
         return freeConnections;

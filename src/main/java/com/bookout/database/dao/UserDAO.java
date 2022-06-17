@@ -1,6 +1,5 @@
 package com.bookout.database.dao;
 
-import com.bookout.database.ConnectionPool;
 import com.bookout.database.daointerfaces.UserDAOInterface;
 import com.bookout.enitiy.User;
 import com.bookout.util.SqlQueries;
@@ -14,14 +13,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
+import static com.bookout.util.SqlQueries.connectionPool;
+
+public class UserDAO implements UserDAOInterface<User> {
 
     private static final Logger LOGGER = LogManager.getLogger(UserDAO.class);
 
     public void create(User user) throws SQLException {
         Connection conn = null;
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.INSERT_USER);
             statement.setString(1, user.getFirstName());
             statement.setString(2, user.getMobile());
@@ -34,7 +35,7 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
                 throw new SQLException("Inserted " + row_counter + " rows");
 
             statement.close();
-            returnConnection(conn);
+            connectionPool.returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();
@@ -47,7 +48,7 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
         Connection conn = null;
         User user = null;
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_USER);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -64,7 +65,7 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
             }
 
             statement.close();
-            returnConnection(conn);
+            connectionPool.returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();
@@ -78,7 +79,7 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
         Connection conn = null;
         List<User> list = null;
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_ALL_USERS);
             list = new ArrayList<User>();
             ResultSet resultSet = statement.executeQuery();
@@ -97,7 +98,7 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
             }
 
             statement.close();
-            returnConnection(conn);
+            connectionPool.returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();
@@ -110,7 +111,7 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
     public void update(User user) throws SQLException {
         Connection conn = null;
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.UPDATE_USER);
             statement.setString(1, user.getFirstName());
             statement.setString(2, user.getMobile());
@@ -121,25 +122,7 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
             statement.setLong(7, user.getId());
 
             statement.close();
-            returnConnection(conn);
-
-        } catch (Exception e) {
-            if (conn != null) conn.close();
-            LOGGER.error(e);
-        }
-    }
-
-    @Override
-    public void delete(User user) throws SQLException {
-        Connection conn = null;
-        try {
-            conn = getConnection();
-            PreparedStatement statement = conn.prepareStatement(SqlQueries.DELETE_USER);
-            statement.setLong(1, user.getId());
-
-            statement.close();
-            returnConnection(conn);
-
+            connectionPool.returnConnection(conn);
         } catch (Exception e) {
             if (conn != null) conn.close();
             LOGGER.error(e);
@@ -151,7 +134,7 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
         Connection conn = null;
         User user = null;
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_USER_EMAIL);
             statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
@@ -168,7 +151,7 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
             }
 
             statement.close();
-            returnConnection(conn);
+            connectionPool.returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();
@@ -182,7 +165,7 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
         Connection conn = null;
         User user = null;
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_USER_PHONE);
             statement.setString(1, phone);
             ResultSet resultSet = statement.executeQuery();
@@ -199,7 +182,7 @@ public class UserDAO extends ConnectionPool implements UserDAOInterface<User> {
             }
 
             statement.close();
-            returnConnection(conn);
+            connectionPool.returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();

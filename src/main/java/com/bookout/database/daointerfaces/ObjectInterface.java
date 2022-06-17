@@ -8,5 +8,4 @@ public interface ObjectInterface<T> {
     public T find(long id) throws SQLException;
     public List<T> findAll() throws SQLException;
     public void update(T t) throws SQLException;
-    public void delete(T t) throws SQLException;
 }

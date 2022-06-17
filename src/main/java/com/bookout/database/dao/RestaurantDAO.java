@@ -1,6 +1,5 @@
 package com.bookout.database.dao;
 
-import com.bookout.database.ConnectionPool;
 import com.bookout.database.daointerfaces.RestaurantDAOInterface;
 import com.bookout.enitiy.Restaurant;
 import com.bookout.util.SqlQueries;
@@ -14,14 +13,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterface<Restaurant> {
+import static com.bookout.util.SqlQueries.connectionPool;
+
+public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
     private static final Logger LOGGER = LogManager.getLogger(RestaurantDAO.class);
 
     @Override
     public void create(Restaurant restaurant) throws SQLException {
         Connection con = null;
         try {
-            con = getConnection();
+            con = connectionPool.getConnection();
             PreparedStatement stmt = con.prepareStatement(SqlQueries.INSERT_RESTAURANT);
             stmt.setInt(1, restaurant.getCategoryId());
             stmt.setString(2, restaurant.getName());
@@ -36,11 +37,12 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
                 throw new SQLException("Inserted " + row_counter + " rows");
 
             stmt.close();
-            returnConnection(con);
+            connectionPool.returnConnection(con);
+
         } catch (Exception e) {
+            if (con != null) con.close();
             LOGGER.error(e);
         }
-        if (con != null) con.close();
     }
 
     @Override
@@ -48,7 +50,7 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
         Connection conn = null;
         Restaurant restaurant = null;
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_RESTAURANT);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -66,12 +68,11 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
                 restaurant.setLocalId(resultSet.getInt("local_id"));
             }
             statement.close();
-            returnConnection(conn);
-
+            connectionPool.returnConnection(conn);
         } catch (Exception e) {
+            if (conn != null) conn.close();
             LOGGER.error(e);
         }
-        if (conn != null) conn.close();
         return restaurant;
     }
 
@@ -80,7 +81,7 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
         Connection conn = null;
         List<Restaurant> list = null;
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_ALL_RESTAURANTS);
             ResultSet resultSet = statement.executeQuery();
             list = new ArrayList<Restaurant>();
@@ -100,12 +101,12 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
                 list.add(restaurant);
             }
             statement.close();
-            returnConnection(conn);
+            connectionPool.returnConnection(conn);
 
         } catch (Exception e) {
+            if (conn != null) conn.close();
             LOGGER.error(e);
         }
-        if (conn != null) conn.close();
         return list;
     }
 
@@ -113,7 +114,7 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
     public void update(Restaurant restaurant) throws SQLException {
         Connection conn = null;
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement stmt = conn.prepareStatement(SqlQueries.UPDATE_RESTAURANT);
             stmt.setInt(1, restaurant.getCategoryId());
             stmt.setString(2, restaurant.getName());
@@ -126,29 +127,12 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
             stmt.setInt(9, restaurant.getId());
 
             stmt.close();
-            returnConnection(conn);
+            connectionPool.returnConnection(conn);
 
         } catch (Exception e) {
+            if (conn != null) conn.close();
             LOGGER.error(e);
         }
-        if (conn != null) conn.close();
-    }
-
-    @Override
-    public void delete(Restaurant restaurant) throws SQLException {
-        Connection conn = null;
-        try {
-            conn = getConnection();
-            PreparedStatement statement = conn.prepareStatement(SqlQueries.DELETE_USER);
-            statement.setLong(1, restaurant.getId());
-
-            statement.close();
-            returnConnection(conn);
-
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
-        if (conn != null) conn.close();
     }
 
     @Override
@@ -156,7 +140,7 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
         Connection conn = null;
         List<Restaurant> list = null;
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_RESTAURANTS_CATEGORY);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -177,12 +161,12 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
                 list.add(restaurant);
             }
             statement.close();
-            returnConnection(conn);
+            connectionPool.returnConnection(conn);
 
         } catch (Exception e) {
+            if (conn != null) conn.close();
             LOGGER.error(e);
         }
-        if (conn != null) conn.close();
         return list;
     }
 
@@ -191,7 +175,7 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
         Connection conn = null;
         List<Restaurant> list = null;
         try {
-            conn = getConnection();
+            conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_RESTAURANTS_NAME);
             statement.setString(1, search);
             ResultSet resultSet = statement.executeQuery();
@@ -212,12 +196,12 @@ public class RestaurantDAO extends ConnectionPool implements RestaurantDAOInterf
                 list.add(restaurant);
             }
             statement.close();
-            returnConnection(conn);
+            connectionPool.returnConnection(conn);
 
         } catch (Exception e) {
+            if (conn != null) conn.close();
             LOGGER.error(e);
         }
-        if (conn != null) conn.close();
         return list;
     }
 }
