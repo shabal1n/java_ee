@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Restaurant implements Serializable {
     private int id;
+
+    private int localItemId;
     private int categoryId;
     private String name;
 
@@ -12,6 +14,14 @@ public class Restaurant implements Serializable {
     private int capacity;
     private double rating;
     private int currFreeSpace;
+
+    public int getLocalItemId() {
+        return localItemId;
+    }
+
+    public void setLocalItemId(int local_item_id) {
+        this.localItemId = local_item_id;
+    }
 
     public String getImageUrl() {
         return image;

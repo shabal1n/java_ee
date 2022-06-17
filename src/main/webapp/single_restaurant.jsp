@@ -1,6 +1,11 @@
 <%@include file="header.jsp"%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<style>
+    .input_time {
+        margin-inline: 1%;
+    }
+</style>
 
 <section class="breadcrumb breadcrumb_bg2">
     <div class="container">
@@ -34,8 +39,21 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="single_food_item media">
+                            <div class="single_food_item" style="padding: 3%">
                                <h3><fmt:message key="restaurant.available"/></h3>
+                                <br>
+                                <div class="single_food_item media" style="width: 100%; border: none">
+                                    <c:forEach var="time" items="${date_time}">
+                                        <c:choose>
+                                            <c:when test="${time.booked == false}">
+                                                <input type="submit" class="btn btn-outline-secondary input_time" value="${time.getTime()}">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <input type="submit" class="btn btn-outline-secondary input_time" value="${time.getTime()}" disabled>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </div>
                             </div>
                         </div>
                     </div>

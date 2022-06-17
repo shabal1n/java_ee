@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.bookout.util.SqlQueries.connectionPool;
@@ -19,8 +20,31 @@ public class AvailableDateTimeDAO implements AvailableDateTimeDAOInterface<Avail
 
 
     @Override
-    public List<AvailableDateTime> getByRestaurantId(int restaurantId) {
-        return null;
+    public List<AvailableDateTime> getByRestaurantId(int restaurantId) throws SQLException {
+        Connection conn = null;
+        List<AvailableDateTime> list = new ArrayList<>();
+        try {
+            conn = connectionPool.getConnection();
+            PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_AVAILABLE_BY_RESTAURANT);
+            statement.setLong(1, restaurantId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                AvailableDateTime available = new AvailableDateTime();
+                available.setId(resultSet.getInt("id"));
+                available.setRestaurantId(resultSet.getInt("restaurant_id"));
+                available.setDateTime(resultSet.getString("date_time"));
+                available.setBooked(resultSet.getBoolean("booked"));
+                list.add(available);
+            }
+
+            statement.close();
+            connectionPool.returnConnection(conn);
+        } catch (Exception e) {
+            if (conn != null) conn.close();
+            LOGGER.error(e);
+        }
+        return list;
     }
 
     @Override

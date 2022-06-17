@@ -24,14 +24,15 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
         try {
             con = connectionPool.getConnection();
             PreparedStatement stmt = con.prepareStatement(SqlQueries.INSERT_RESTAURANT);
-            stmt.setInt(1, restaurant.getCategoryId());
-            stmt.setString(2, restaurant.getName());
-            stmt.setString(3, restaurant.getImageUrl());
-            stmt.setString(4, restaurant.getAddress());
-            stmt.setInt(5, restaurant.getCapacity());
-            stmt.setDouble(6, restaurant.getRating());
-            stmt.setInt(7, restaurant.getCurrFreeSpace());
-            stmt.setInt(8, restaurant.getLocalId());
+            stmt.setInt(1, restaurant.getLocalId());
+            stmt.setInt(2, restaurant.getCategoryId());
+            stmt.setString(3, restaurant.getName());
+            stmt.setString(4, restaurant.getImageUrl());
+            stmt.setString(5, restaurant.getAddress());
+            stmt.setInt(6, restaurant.getCapacity());
+            stmt.setDouble(7, restaurant.getRating());
+            stmt.setInt(8, restaurant.getCurrFreeSpace());
+            stmt.setInt(9, restaurant.getLocalId());
             int row_counter = stmt.executeUpdate();
             if (row_counter != 1)
                 throw new SQLException("Inserted " + row_counter + " rows");
@@ -58,6 +59,7 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
             while (resultSet.next()) {
                 restaurant = new Restaurant();
                 restaurant.setId(resultSet.getInt("id"));
+                restaurant.setLocalItemId(resultSet.getInt("local_item_id"));
                 restaurant.setCategoryId(resultSet.getInt("category_id"));
                 restaurant.setName(resultSet.getString("name"));
                 restaurant.setImageUrl(resultSet.getString("image"));
@@ -89,6 +91,7 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
             while (resultSet.next()) {
                 Restaurant restaurant = new Restaurant();
                 restaurant.setId(resultSet.getInt("id"));
+                restaurant.setLocalItemId(resultSet.getInt("local_item_id"));
                 restaurant.setCategoryId(resultSet.getInt("category_id"));
                 restaurant.setName(resultSet.getString("name"));
                 restaurant.setImageUrl(resultSet.getString("image"));
@@ -117,14 +120,15 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
             conn = connectionPool.getConnection();
             PreparedStatement stmt = conn.prepareStatement(SqlQueries.UPDATE_RESTAURANT);
             stmt.setInt(1, restaurant.getCategoryId());
-            stmt.setString(2, restaurant.getName());
-            stmt.setString(3, restaurant.getImageUrl());
-            stmt.setString(4, restaurant.getAddress());
-            stmt.setInt(5, restaurant.getCapacity());
-            stmt.setDouble(6, restaurant.getRating());
-            stmt.setInt(7, restaurant.getCurrFreeSpace());
-            stmt.setInt(8, restaurant.getLocalId());
-            stmt.setInt(9, restaurant.getId());
+            stmt.setInt(2, restaurant.getLocalItemId());
+            stmt.setString(3, restaurant.getName());
+            stmt.setString(4, restaurant.getImageUrl());
+            stmt.setString(5, restaurant.getAddress());
+            stmt.setInt(6, restaurant.getCapacity());
+            stmt.setDouble(7, restaurant.getRating());
+            stmt.setInt(8, restaurant.getCurrFreeSpace());
+            stmt.setInt(9, restaurant.getLocalId());
+            stmt.setInt(10, restaurant.getId());
 
             stmt.close();
             connectionPool.returnConnection(conn);
@@ -149,6 +153,7 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
             while (resultSet.next()) {
                 Restaurant restaurant = new Restaurant();
                 restaurant.setId(resultSet.getInt("id"));
+                restaurant.setLocalItemId(resultSet.getInt("local_item_id"));
                 restaurant.setCategoryId(resultSet.getInt("category_id"));
                 restaurant.setName(resultSet.getString("name"));
                 restaurant.setImageUrl(resultSet.getString("image"));
@@ -184,6 +189,7 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
             while (resultSet.next()) {
                 Restaurant restaurant = new Restaurant();
                 restaurant.setId(resultSet.getInt("id"));
+                restaurant.setLocalItemId(resultSet.getInt("local_item_id"));
                 restaurant.setCategoryId(resultSet.getInt("category_id"));
                 restaurant.setName(resultSet.getString("name"));
                 restaurant.setImageUrl(resultSet.getString("image"));

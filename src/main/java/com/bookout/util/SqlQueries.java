@@ -17,12 +17,12 @@ public class SqlQueries {
     public static final String FIND_USER_EMAIL = "SELECT * FROM user_info WHERE email = ?;";
     public static final String FIND_USER_PHONE = "SELECT * FROM user_info WHERE mobile = ?;";
     //RestaurantsDAO queries
-    public static final String INSERT_RESTAURANT = "INSERT INTO restaurant(category_id, name, image, address, capacity, rating, curr_free_space, local_id) VALUES" +
-            "(?, ?, ?, ?, ?, ?, ?, ?);";
-    public static final String FIND_RESTAURANT = "SELECT * FROM restaurant WHERE id = ?;";
+    public static final String INSERT_RESTAURANT = "INSERT INTO restaurant(local_item_id, category_id, name, image, address, capacity, rating, curr_free_space, local_id) VALUES" +
+            "(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    public static final String FIND_RESTAURANT = "SELECT * FROM restaurant WHERE local_item_id = ?;";
     public static final String FIND_ALL_RESTAURANTS = "SELECT * FROM restaurant;";
     public static final String UPDATE_RESTAURANT = "UPDATE restaurant " +
-            "SET category_id = ?, name = ?, image = ?, address = ?, capacity = ?, rating = ?, curr_free_space = ?, local_id = ?" +
+            "SET category_id = ?, local_item_id = ?, name = ?, image = ?, address = ?, capacity = ?, rating = ?, curr_free_space = ?, local_id = ?" +
             "WHERE id = ?;";
     public static final String FIND_RESTAURANTS_CATEGORY = "SELECT * FROM restaurant WHERE category_id = ?;";
     public static final String FIND_RESTAURANTS_NAME = "SELECT * FROM restaurant WHERE ? LIKE '%' || name || '%';";

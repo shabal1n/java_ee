@@ -29,11 +29,12 @@ public class SingleRestaurant implements Service {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;
         long restaurantId = Long.parseLong(request.getParameter("id"));
+        //String local = (String) request.getSession().getAttribute("language");
+
         Restaurant currentRestaurant = restaurantDAO.find(restaurantId);
-        //List<AvailableDateTime> dateTimeList = dateTimeDAO.getByRestaurantId(currentRestaurant.getId());
+        List<AvailableDateTime> dateTimeList = dateTimeDAO.getByRestaurantId(currentRestaurant.getLocalItemId());
         request.setAttribute("restaurant", currentRestaurant);
-//        request.setAttribute("date_time", dateTimeList);
-//        LOGGER.info(dateTimeList.size());
+        request.setAttribute("date_time", dateTimeList);
 
 
         dispatcher = request.getRequestDispatcher(SINGLE_RESTAURANT);

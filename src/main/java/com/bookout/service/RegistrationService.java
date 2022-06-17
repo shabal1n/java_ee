@@ -31,12 +31,13 @@ public class RegistrationService implements Service {
             User email = userDAO.getByPhone(request.getParameter("email"));
             if(phone == null && email == null) {
                 User user = new User();
+                int localeId = (int) request.getSession().getAttribute("language");
                 user.setFirstName(request.getParameter("name"));
                 user.setEmail(request.getParameter("email"));
                 user.setMobile(request.getParameter("mobile"));
                 user.setPasswordHash(request.getParameter("password"));
                 user.setIsAdmin(false);
-                user.setLocalId(1);
+                user.setLocalId(localeId);
                 userDAO.create(user);
                 LOGGER.info("User was created");
                 response.sendRedirect(LOGIN_JSP);

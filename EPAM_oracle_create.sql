@@ -34,16 +34,16 @@ CREATE TABLE Available_date_time
 
 CREATE TABLE Restaurant
 (
-    id              SERIAL UNIQUE      NOT NULL,
-    local_item_id   int                NOT NULL,
-    category_id     bigint             NOT NULL,
-    name            VARCHAR(50) UNIQUE NOT NULL,
+    id              SERIAL UNIQUE NOT NULL,
+    local_item_id   int           NOT NULL,
+    category_id     bigint        NOT NULL,
+    name            VARCHAR(50)   NOT NULL,
     image           VARCHAR(256),
-    address         VARCHAR(70)        NOT NULL,
-    capacity        int                NOT NULL,
+    address         VARCHAR(70)   NOT NULL,
+    capacity        int           NOT NULL,
     rating          real,
-    curr_free_space int                NOT NULL,
-    local_id        int                NOT NULL,
+    curr_free_space int           NOT NULL,
+    local_id        int           NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -128,30 +128,50 @@ insert into Category (id, local_item_id, name, local_id)
 values (10, 5, 'Кофейни', 1);
 
 
-insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space, local_id)
-values (1, 1, 1, 'Wuckert LLC', 'http://dummyimage.com/250x250.png/cc0000/ffffff', '79618 Reindahl Junction', 27, 4.7, 10,
+insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space,
+                        local_id)
+values (1, 1, 1, 'Coffee & GO', 'http://dummyimage.com/250x250.png/cc0000/ffffff', 'Kasaray batyr, 155', 27, 4.7, 10,
         2);
-insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space, local_id)
-values (2, 2, 3, 'Keebler LLC', 'http://dummyimage.com/250x250.png/ff4444/ffffff', '25 Kensington Point', 23, 2.8, 6, 2);
-insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space, local_id)
-values (3, 3, 2, 'Wuckert and Sons', 'http://dummyimage.com/250x250.png/dddddd/000000', '53439 Miller Circle', 45, 4.5, 5,
+insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space,
+                        local_id)
+values (11, 1, 1, 'Coffee & GO', 'http://dummyimage.com/250x250.png/cc0000/ffffff', 'Карасай батыра, 155', 27, 4.7, 10,
         2);
-insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space, local_id)
+insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space,
+                        local_id)
+values (2, 2, 3, 'Keebler LLC', 'http://dummyimage.com/250x250.png/ff4444/ffffff', '25 Kensington Point', 23, 2.8, 6,
+        2);
+insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space,
+                        local_id)
+values (3, 3, 2, 'Wuckert and Sons', 'http://dummyimage.com/250x250.png/dddddd/000000', '53439 Miller Circle', 45, 4.5,
+        5,
+        2);
+insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space,
+                        local_id)
 values (4, 4, 2, 'Kreiger-Corwin', 'http://dummyimage.com/250x250.png/dddddd/000000', '853 Starling Circle', 29, 1.2, 1,
         2);
-insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space, local_id)
-values (5, 5, 3, 'Conn, Kuvalis and Robel', 'http://dummyimage.com/250x250.png/dddddd/000000', '39 Iowa Parkway', 45, 2.1,
+insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space,
+                        local_id)
+values (5, 5, 3, 'Conn, Kuvalis and Robel', 'http://dummyimage.com/250x250.png/dddddd/000000', '39 Iowa Parkway', 45,
+        2.1,
         1, 2);
-insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space, local_id)
-values (6, 6, 1, 'Pfeffer-Strosin', 'http://dummyimage.com/250x250.png/dddddd/000000', '33994 Sunnyside Parkway', 47, 1.4,
+insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space,
+                        local_id)
+values (6, 6, 1, 'Pfeffer-Strosin', 'http://dummyimage.com/250x250.png/dddddd/000000', '33994 Sunnyside Parkway', 47,
+        1.4,
         4, 2);
-insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space, local_id)
+insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space,
+                        local_id)
 values (7, 7, 5, 'Carroll and Sons', 'http://dummyimage.com/250x250.png/dddddd/000000', '8 Armistice Trail', 45, 4.4, 9,
         2);
-insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space, local_id)
+insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space,
+                        local_id)
 values (8, 8, 5, 'Stiedemann, Reichert and Oberbrunner', 'http://dummyimage.com/250x250.png/dddddd/000000',
         '0407 Grim Junction', 15, 1.5, 4, 2);
-insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space, local_id)
-values (9, 9, 1, 'Beier-Hahn', 'http://dummyimage.com/250x250.png/dddddd/000000', '404 Norway Maple Plaza', 34, 2.3, 7, 2);
-insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space, local_id)
-values (10, 10, 3, 'Jakubowski LLC', 'http://dummyimage.com/250x250.png/dddddd/000000', '663 Hoffman Point', 44, 4.2, 1, 2);
+insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space,
+                        local_id)
+values (9, 9, 1, 'Beier-Hahn', 'http://dummyimage.com/250x250.png/dddddd/000000', '404 Norway Maple Plaza', 34, 2.3, 7,
+        2);
+insert into Restaurant (id, local_item_id, category_id, name, image, address, capacity, rating, curr_free_space,
+                        local_id)
+values (10, 10, 3, 'Jakubowski LLC', 'http://dummyimage.com/250x250.png/dddddd/000000', '663 Hoffman Point', 44, 4.2, 1,
+        2);
