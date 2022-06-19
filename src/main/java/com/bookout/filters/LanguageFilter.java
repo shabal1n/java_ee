@@ -1,5 +1,6 @@
 package com.bookout.filters;
 
+import com.bookout.enitiy.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,8 +17,9 @@ public class LanguageFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
+        String locale = req.getParameter("sessionLocale");
         if (req.getParameter("sessionLocale") != null) {
-            req.getSession().setAttribute("language", req.getParameter("sessionLocale"));
+            req.getSession().setAttribute("language", locale);
         }
         chain.doFilter(request, response);
     }

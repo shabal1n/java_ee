@@ -16,8 +16,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import static com.bookout.util.PageNames.LOGIN_JSP;
-import static com.bookout.util.PageNames.MAIN_JSP;
-
+import static com.bookout.util.Pages.MAIN_PAGE;
 public class LoginService implements Service{
     private static final Logger LOGGER = LogManager.getLogger(LoginService.class);
     private final UserDAOInterface<User> userDAO = new UserDAO();
@@ -35,7 +34,9 @@ public class LoginService implements Service{
                 LOGGER.info("Logged in as " + loginUser.getFirstName());
                 session.setAttribute("user", loginUser);
                 session.setAttribute("admin", loginUser.getIsAdmin());
-                response.sendRedirect(MAIN_JSP);
+                session.setAttribute("language", loginUser.getLocalName());
+                response.sendRedirect(MAIN_PAGE);
+                return;
             }
         }
         dispatcher.forward(request, response);

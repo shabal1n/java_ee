@@ -46,6 +46,7 @@ public class CategoriesService implements Service {
 
         request.setAttribute("restaurants", restaurants);
         dispatcher = request.getRequestDispatcher(CATEGORIES_JSP);
+        response.setCharacterEncoding("UTF-8");
         dispatcher.forward(request, response);
     }
 }

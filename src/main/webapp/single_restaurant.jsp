@@ -43,16 +43,19 @@
                                <h3><fmt:message key="restaurant.available"/></h3>
                                 <br>
                                 <div class="single_food_item media" style="width: 100%; border: none">
-                                    <c:forEach var="time" items="${date_time}">
-                                        <c:choose>
-                                            <c:when test="${time.booked == false}">
-                                                <input type="submit" class="btn btn-outline-secondary input_time" value="${time.getTime()}">
-                                            </c:when>
-                                            <c:otherwise>
-                                                <input type="submit" class="btn btn-outline-secondary input_time" value="${time.getTime()}" disabled>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </c:forEach>
+                                    <form method="POST" action="${pageContext.request.contextPath}/reserve">
+                                        <input type="hidden" name="restaurant" value="${restaurant.getId()}">
+                                        <c:forEach var="time" items="${date_time}">
+                                            <c:choose>
+                                                <c:when test="${time.booked == false}">
+                                                    <input type="submit" class="btn btn-outline-secondary input_time" value="${time.getTime()}" name="time">
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <input type="submit" class="btn btn-outline-secondary input_time" value="${time.getTime()}" disabled>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </form>
                                 </div>
                             </div>
                         </div>

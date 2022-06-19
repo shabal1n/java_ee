@@ -55,6 +55,11 @@ public class User implements Serializable {
         return localId;
     }
 
+    public String getLocalName() {
+        if(localId == 1) return "ru";
+        return "en";
+    }
+
     public void setLocalId(int localId) {
         this.localId = localId;
     }

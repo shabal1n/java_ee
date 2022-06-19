@@ -54,7 +54,8 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="tel" id="form4Phone" class="form-control" pattern="+7[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="+7" name="mobile" required/>
+                                            <input type="tel" id="form4Phone" class="form-control" onkeypress="return isNumberKey(event)"
+                                                   pattern="+7[0-9]{3}[0-9]{3}[0-9]{4}" value="+7" name="mobile" required/>
                                             <label class="form-label" for="form4Phone"><fmt:message key="registration.phone"/></label>
                                         </div>
                                     </div>

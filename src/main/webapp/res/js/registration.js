@@ -4,6 +4,15 @@ const phone = document.getElementById("form4Phone");
 const password1 = document.getElementById("form3Password");
 const password2 = document.getElementById("form3Password2");
 
+function isNumberKey(evt) {
+    const charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode === 107)
+        return true;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return phone.value.length < 12;
+}
+
 function validation() {
     name_valid();
     email_valid();
@@ -48,8 +57,8 @@ function phone_valid() {
 }
 
 function passwords_valid() {
-    if(password1.value !== "" && password2.value !== "") {
-        if(password1.value === password2.value) {
+    if (password1.value !== "" && password2.value !== "") {
+        if (password1.value === password2.value) {
             password1.classList.remove("is-invalid");
             password2.classList.remove("is-invalid");
             password1.classList.add("is-valid");
@@ -62,11 +71,11 @@ function passwords_valid() {
             password2.classList.add("is-invalid");
         }
     }
-    if(password1.value === "") {
+    if (password1.value === "") {
         password1.classList.remove("is-valid");
         password1.classList.add("is-invalid");
     }
-    if(password2.value === "") {
+    if (password2.value === "") {
         password1.classList.remove("is-valid");
         password2.classList.add("is-invalid");
     }

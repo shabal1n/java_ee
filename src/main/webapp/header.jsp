@@ -8,7 +8,7 @@
 <%@ page session="true" %>
 <%@ page isELIgnored="false" %>
 
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<%--<c:set var="language" value="${(sessionScope.language == null)  'ru'}" scope="session" />--%>
 
 <fmt:setBundle basename="language"/>
 <fmt:setLocale value="${sessionScope.language}" scope="session"/>
@@ -73,7 +73,15 @@
                     </div>
                     <div class="social_icon d-none d-lg-block">
                         <a href="#" class="single_social_icon"><i class="fa fa-search"></i></a>
-                        <a href="login" class="single_social_icon"><i class="fa fa-user"></i></a>
+                        <c:choose>
+                            <c:when test="${sessionScope.user == null}">
+                                <a href="login" class="single_social_icon"><i class="fa fa-user"></i></a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="profile" class="single_social_icon">${sessionScope.user.getFirstName()}</a>
+                            </c:otherwise>
+                        </c:choose>
+
                         <select onchange="window.location.href = '${pageContext.request.contextPath}?sessionLocale='.concat(this.value)">
                             <c:choose>
                                 <c:when test="${sessionScope.language == 'en'}">

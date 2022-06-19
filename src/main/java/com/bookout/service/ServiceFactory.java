@@ -3,6 +3,7 @@ package com.bookout.service;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.awt.print.Book;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ public class ServiceFactory {
         SERVICE_MAP.put("/login", new LoginService());
         SERVICE_MAP.put("/registration", new RegistrationService());
         SERVICE_MAP.put("/book", new SingleRestaurant());
+        SERVICE_MAP.put("/reserve", new BookingService());
     }
 
     public static ServiceFactory getInstance() {

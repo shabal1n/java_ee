@@ -62,7 +62,7 @@
         </div>
 
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4"><fmt:message key="login.sign"/></button>
+        <input type="submit" class="btn btn-primary btn-block mb-4" value="<fmt:message key="login.sign"/>">
 
         <!-- Register buttons -->
         <div class="text-center">
