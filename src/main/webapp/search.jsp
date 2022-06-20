@@ -1,6 +1,6 @@
 <%@include file="header.jsp" %>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="en">
 
 <head>
@@ -54,7 +54,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 <!-- food menu part end-->

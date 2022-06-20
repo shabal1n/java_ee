@@ -30,6 +30,7 @@
         color: lightgray;
         border-radius: 6px;
         margin-right: 1%;
+        margin-bottom: 1%;
     }
 </style>
 
