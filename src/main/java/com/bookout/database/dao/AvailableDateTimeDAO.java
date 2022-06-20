@@ -114,6 +114,7 @@ public class AvailableDateTimeDAO implements AvailableDateTimeDAOInterface<Avail
             PreparedStatement statement = conn.prepareStatement(SqlQueries.UPDATE_AVAILABLE);
             statement.setBoolean(1, availableDateTime.isBooked());
             statement.setLong(2, availableDateTime.getId());
+            statement.executeUpdate();
 
             statement.close();
             connectionPool.returnConnection(conn);

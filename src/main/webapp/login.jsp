@@ -45,22 +45,6 @@
             <label class="form-label" for="form2Example2"><fmt:message key="login.password"/></label>
         </div>
 
-        <!-- 2 column grid layout for inline styling -->
-        <div class="row mb-4">
-            <div class="col d-flex justify-content-center">
-                <!-- Checkbox -->
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked/>
-                    <label class="form-check-label" for="form2Example31"> <fmt:message key="login.remember"/> </label>
-                </div>
-            </div>
-
-            <div class="col">
-                <!-- Simple link -->
-                <a href="#!"><fmt:message key="login.forgot"/></a>
-            </div>
-        </div>
-
         <!-- Submit button -->
         <input type="submit" class="btn btn-primary btn-block mb-4" value="<fmt:message key="login.sign"/>">
 

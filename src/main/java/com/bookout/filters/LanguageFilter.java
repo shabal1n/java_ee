@@ -1,5 +1,7 @@
 package com.bookout.filters;
 
+import com.bookout.database.dao.UserDAO;
+import com.bookout.database.daointerfaces.UserDAOInterface;
 import com.bookout.enitiy.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -7,8 +9,11 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LanguageFilter implements Filter {
+
+    private final UserDAOInterface<User> userDAO = new UserDAO();
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Filter.super.init(filterConfig);
@@ -27,15 +32,16 @@ public class LanguageFilter implements Filter {
                 } else {
                     user.setLocalId(1);
                 }
-                //here i update user in db
+                req.getSession().setAttribute("user", user);
+                try {
+                    userDAO.update(user);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
-        }
-        if(user != null) {
-            req.getSession().setAttribute("language", user.getLocalName());
         } else {
-            if (locale != null) {
-                req.getSession().setAttribute("language", locale);
-            } else {
+            String sessionLocale = (String) req.getSession().getAttribute("language");
+            if(sessionLocale == null) {
                 req.getSession().setAttribute("language", "ru");
             }
         }

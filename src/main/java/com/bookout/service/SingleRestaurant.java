@@ -7,6 +7,7 @@ import com.bookout.database.daointerfaces.RestaurantDAOInterface;
 import com.bookout.enitiy.AvailableDateTime;
 import com.bookout.enitiy.Local;
 import com.bookout.enitiy.Restaurant;
+import com.bookout.enitiy.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,6 +21,7 @@ import java.text.ParseException;
 import java.util.List;
 
 import static com.bookout.util.PageNames.SINGLE_RESTAURANT;
+import static com.bookout.util.Pages.LOGIN_PAGE;
 
 public class SingleRestaurant implements Service {
     private static final Logger LOGGER = LogManager.getLogger(SingleRestaurant.class);
@@ -28,18 +30,24 @@ public class SingleRestaurant implements Service {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
-        RequestDispatcher dispatcher;
-        long restaurantId = Long.parseLong(request.getParameter("id"));
-        Local local = new Local();
-        int local_id = local.getLocalId((String) request.getSession().getAttribute("language"));
+        User user = (User) request.getSession().getAttribute("user");
+        if(user != null) {
+            RequestDispatcher dispatcher;
+            long restaurantId = Long.parseLong(request.getParameter("id"));
+            Local local = new Local();
+            int local_id = local.getLocalId((String) request.getSession().getAttribute("language"));
 
-        Restaurant currentRestaurant = restaurantDAO.findByLocal(restaurantId, local_id);
-        List<AvailableDateTime> dateTimeList = dateTimeDAO.getByRestaurantId(currentRestaurant.getLocalItemId());
-        request.setAttribute("restaurant", currentRestaurant);
-        request.setAttribute("date_time", dateTimeList);
+            Restaurant currentRestaurant = restaurantDAO.findByLocal(restaurantId, local_id);
+            List<AvailableDateTime> dateTimeList = dateTimeDAO.getByRestaurantId(currentRestaurant.getLocalItemId());
+            request.setAttribute("restaurant", currentRestaurant);
+            request.setAttribute("date_time", dateTimeList);
 
 
-        dispatcher = request.getRequestDispatcher(SINGLE_RESTAURANT);
-        dispatcher.forward(request, response);
+            dispatcher = request.getRequestDispatcher(SINGLE_RESTAURANT);
+            dispatcher.forward(request, response);
+        } else {
+            response.sendRedirect(LOGIN_PAGE);
+            return;
+        }
     }
 }

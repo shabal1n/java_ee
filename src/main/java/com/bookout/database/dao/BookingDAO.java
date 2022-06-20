@@ -1,6 +1,5 @@
 package com.bookout.database.dao;
 
-import com.bookout.database.ConnectionPool;
 import com.bookout.database.daointerfaces.BookingDAOInterface;
 import com.bookout.enitiy.Booking;
 import com.bookout.util.SqlQueries;
@@ -22,6 +21,18 @@ public class BookingDAO implements BookingDAOInterface<Booking> {
     @Override
     public Booking getByRestaurantIdAndDate(int restaurantId, String date) {
         return null;
+    }
+
+    @Override
+    public List<Booking> getBookingByUserId(long id) throws SQLException {
+        List<Booking> bookings = findAll();
+        List<Booking> res = new ArrayList<>();
+        for (int i = 0; i < bookings.size(); i++) {
+            if(bookings.get(i).getUserId() == id) {
+                res.add(bookings.get(i));
+            }
+        }
+        return res;
     }
 
     @Override

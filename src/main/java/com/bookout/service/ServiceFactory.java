@@ -15,13 +15,14 @@ public class ServiceFactory {
     static {
         SERVICE_MAP.put("/error", new ErrorService());
         SERVICE_MAP.put("/main", new MainService());
-        SERVICE_MAP.put("/map", new MapService());
         SERVICE_MAP.put("/restaurants", new RestaurantsService());
         SERVICE_MAP.put("/category", new CategoriesService());
         SERVICE_MAP.put("/login", new LoginService());
         SERVICE_MAP.put("/registration", new RegistrationService());
         SERVICE_MAP.put("/book", new SingleRestaurant());
         SERVICE_MAP.put("/reserve", new BookingService());
+        SERVICE_MAP.put("/profile", new ProfileService());
+        SERVICE_MAP.put("/search", new SearchService());
     }
 
     public static ServiceFactory getInstance() {

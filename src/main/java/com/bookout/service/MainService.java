@@ -29,8 +29,7 @@ public class MainService implements Service {
         RequestDispatcher dispatcher;
         Local local = new Local();
         int local_id = local.getLocalId((String) request.getSession().getAttribute("language"));
-        List<Restaurant> restaurants = restaurantsDAO.findAll();
-        //TODO change to findAllByLocal()
+        List<Restaurant> restaurants = restaurantsDAO.findAllByLocal(local_id);
         restaurants.sort((o1, o2) -> {
             if (o1.getRating() < o2.getRating())
                 return 1;
@@ -39,8 +38,12 @@ public class MainService implements Service {
             return 0;
         });
         List<Restaurant> top6 = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            top6.add(restaurants.get(i));
+        if(restaurants.size() >= 6) {
+            for (int i = 0; i < 6; i++) {
+                top6.add(restaurants.get(i));
+            }
+        } else {
+            top6.addAll(restaurants);
         }
         request.setAttribute("top1", restaurants.get(0));
         request.setAttribute("top6", top6);

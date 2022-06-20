@@ -120,6 +120,7 @@ public class UserDAO implements UserDAOInterface<User> {
             statement.setInt(5, user.getLocalId());
             statement.setBoolean(6, user.getIsAdmin());
             statement.setLong(7, user.getId());
+            statement.executeUpdate();
 
             statement.close();
             connectionPool.returnConnection(conn);

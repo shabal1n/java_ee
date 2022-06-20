@@ -14,15 +14,13 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.print.Book;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static com.bookout.util.PageNames.BOOKING_JSP;
 import static com.bookout.util.Pages.LOGIN_PAGE;
+import static com.bookout.util.Pages.PROFILE_PAGE;
 
 public class BookingService implements Service {
     private final Logger LOGGER = LogManager.getLogger(BookingService.class);
@@ -37,7 +35,6 @@ public class BookingService implements Service {
         int restaurantId = Integer.parseInt(request.getParameter("restaurant"));
         int dateTimeId = Integer.parseInt(request.getParameter("dateTime"));
         AvailableDateTime bookingTime = timeDAO.find(dateTimeId);
-        LOGGER.info(bookingTime.getId());
         Restaurant restaurant = restaurantDAO.find(restaurantId);
         String numOfPersons = request.getParameter("persons");
 
@@ -52,7 +49,7 @@ public class BookingService implements Service {
             bookingDAO.create(booking);
             bookingTime.setBooked(true);
             timeDAO.update(bookingTime);
-            response.sendRedirect(LOGIN_PAGE);
+            response.sendRedirect(PROFILE_PAGE);
             return;
         }
 

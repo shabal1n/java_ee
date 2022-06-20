@@ -15,6 +15,22 @@
 
 <style>
     <%@include file="res/css/style.css"%>
+    .search_bar {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+    .center_bar {
+        margin: 0 auto;
+        width: fit-content;
+    }
+    .search_input {
+        background-color: transparent;
+        border: 2px solid lightgray;
+        color: lightgray;
+        border-radius: 6px;
+        margin-right: 1%;
+    }
 </style>
 
 <html lang="${sessionScope.language}">
@@ -66,13 +82,9 @@
                                     <a class="dropdown-item" href="${pageContext.request.contextPath}/category?category_name=coffee"><fmt:message key="button.coffee"/></a>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="${pageContext.request.contextPath}/map"><fmt:message key="button.map"/></a>
-                            </li>
                         </ul>
                     </div>
                     <div class="social_icon d-none d-lg-block">
-                        <a href="#" class="single_social_icon"><i class="fa fa-search"></i></a>
                         <c:choose>
                             <c:when test="${sessionScope.user == null}">
                                 <a href="login" class="single_social_icon"><i class="fa fa-user"></i></a>
@@ -96,6 +108,16 @@
                         </select>
                     </div>
                 </nav>
+            </div>
+        </div>
+    </div>
+    <div class="search_bar">
+        <div class="input-group center_bar">
+            <div class="form-outline">
+                <form action="${pageContext.request.contextPath}/search" method="GET">
+                    <input type="search" class="search_input" name="search_text"/>
+                    <input type="submit" class="btn btn-secondary" value="<fmt:message key="label.search"/>">
+                </form>
             </div>
         </div>
     </div>
