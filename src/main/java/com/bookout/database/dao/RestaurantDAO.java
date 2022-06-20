@@ -140,13 +140,14 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
     }
 
     @Override
-    public List<Restaurant> getRestaurantsByCategoryId(int id) throws SQLException {
+    public List<Restaurant> getRestaurantsByCategoryId(int id, int local_id) throws SQLException {
         Connection conn = null;
         List<Restaurant> list = null;
         try {
             conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_RESTAURANTS_CATEGORY);
             statement.setLong(1, id);
+            statement.setInt(2, local_id);
             ResultSet resultSet = statement.executeQuery();
             list = new ArrayList<Restaurant>();
 
@@ -176,13 +177,14 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
     }
 
     @Override
-    public List<Restaurant> getRestaurantsByName(String search) throws SQLException {
+    public List<Restaurant> getRestaurantsByName(String search, int local_id) throws SQLException {
         Connection conn = null;
         List<Restaurant> list = null;
         try {
             conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_RESTAURANTS_NAME);
             statement.setString(1, search);
+            statement.setInt(2, local_id);
             ResultSet resultSet = statement.executeQuery();
             list = new ArrayList<Restaurant>();
 
@@ -204,6 +206,72 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
             statement.close();
             connectionPool.returnConnection(conn);
 
+        } catch (Exception e) {
+            if (conn != null) conn.close();
+            LOGGER.error(e);
+        }
+        return list;
+    }
+
+    public Restaurant findByLocal(long id, int local_id) throws SQLException {
+        Connection conn = null;
+        Restaurant restaurant = null;
+        try {
+            conn = connectionPool.getConnection();
+            PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_RESTAURANT_LOCAL);
+            statement.setLong(1, id);
+            statement.setInt(2, local_id);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                restaurant = new Restaurant();
+                restaurant.setId(resultSet.getInt("id"));
+                restaurant.setLocalItemId(resultSet.getInt("local_item_id"));
+                restaurant.setCategoryId(resultSet.getInt("category_id"));
+                restaurant.setName(resultSet.getString("name"));
+                restaurant.setImageUrl(resultSet.getString("image"));
+                restaurant.setAddress(resultSet.getString("address"));
+                restaurant.setCapacity(resultSet.getInt("capacity"));
+                restaurant.setRating(resultSet.getDouble("rating"));
+                restaurant.setCurrFreeSpace(resultSet.getInt("curr_free_space"));
+                restaurant.setLocalId(resultSet.getInt("local_id"));
+            }
+            statement.close();
+            connectionPool.returnConnection(conn);
+
+        } catch (Exception e) {
+            if (conn != null) conn.close();
+            LOGGER.error(e);
+        }
+        return restaurant;
+    }
+
+    public List<Restaurant> findAllByLocal(int local_id) throws SQLException {
+        Connection conn = null;
+        List<Restaurant> list = null;
+        try {
+            conn = connectionPool.getConnection();
+            PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_ALL_RESTAURANTS_LOCAL);
+            statement.setInt(1, local_id);
+            ResultSet resultSet = statement.executeQuery();
+            list = new ArrayList<>();
+
+            while (resultSet.next()) {
+                Restaurant restaurant = new Restaurant();
+                restaurant.setId(resultSet.getInt("id"));
+                restaurant.setLocalItemId(resultSet.getInt("local_item_id"));
+                restaurant.setCategoryId(resultSet.getInt("category_id"));
+                restaurant.setName(resultSet.getString("name"));
+                restaurant.setImageUrl(resultSet.getString("image"));
+                restaurant.setAddress(resultSet.getString("address"));
+                restaurant.setCapacity(resultSet.getInt("capacity"));
+                restaurant.setRating(resultSet.getDouble("rating"));
+                restaurant.setCurrFreeSpace(resultSet.getInt("curr_free_space"));
+                restaurant.setLocalId(resultSet.getInt("local_id"));
+                list.add(restaurant);
+            }
+            statement.close();
+            connectionPool.returnConnection(conn);
         } catch (Exception e) {
             if (conn != null) conn.close();
             LOGGER.error(e);

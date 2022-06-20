@@ -1,12 +1,15 @@
 package com.bookout.enitiy;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Booking implements Serializable {
     private int id;
-    private int userId;
+    private long userId;
     private int restaurantId;
-    private String date;
+    private long date_id;
     private int numOfPersons;
 
     public int getId() {
@@ -17,11 +20,11 @@ public class Booking implements Serializable {
         this.id = id;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
@@ -33,12 +36,12 @@ public class Booking implements Serializable {
         this.restaurantId = restaurantId;
     }
 
-    public String getDate() {
-        return date;
+    public long getDateId() {
+        return date_id;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateId(long date) {
+        this.date_id = date;
     }
 
     public int getNumOfPersons() {

@@ -28,4 +28,9 @@ public class Local {
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getLocalId(String local) {
+        if (local.equals("ru")) return 1;
+        return 2;
+    }
 }

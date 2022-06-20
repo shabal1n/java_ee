@@ -30,9 +30,9 @@ public class BookingDAO implements BookingDAOInterface<Booking> {
         try {
             con = connectionPool.getConnection();
             PreparedStatement stmt = con.prepareStatement(SqlQueries.INSERT_BOOKING);
-            stmt.setInt(1, booking.getUserId());
+            stmt.setLong(1, booking.getUserId());
             stmt.setInt(2, booking.getRestaurantId());
-            stmt.setString(3, booking.getDate());
+            stmt.setLong(3, booking.getDateId());
             stmt.setInt(4, booking.getNumOfPersons());
 
             int row_counter = stmt.executeUpdate();
@@ -62,7 +62,7 @@ public class BookingDAO implements BookingDAOInterface<Booking> {
                 booking.setId(resultSet.getInt("id"));
                 booking.setUserId(resultSet.getInt("user_id"));
                 booking.setRestaurantId(resultSet.getInt("restaurant_id"));
-                booking.setDate(resultSet.getString("date"));
+                booking.setDateId(resultSet.getLong("date_id"));
                 booking.setNumOfPersons(resultSet.getInt("num_of_persons"));
             }
 
@@ -90,7 +90,7 @@ public class BookingDAO implements BookingDAOInterface<Booking> {
                 booking.setId(resultSet.getInt("id"));
                 booking.setUserId(resultSet.getInt("user_id"));
                 booking.setRestaurantId(resultSet.getInt("restaurant_id"));
-                booking.setDate(resultSet.getString("date"));
+                booking.setDateId(resultSet.getLong("date_id"));
                 booking.setNumOfPersons(resultSet.getInt("num_of_persons"));
                 list.add(booking);
             }

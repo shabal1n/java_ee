@@ -16,7 +16,7 @@ CREATE TABLE Booking
     id             SERIAL NOT NULL,
     user_id        bigint NOT NULL,
     restaurant_id  bigint NOT NULL,
-    date_time_id   int    NOT NULL,
+    date_id        int    NOT NULL,
     num_of_persons int    NOT NULL,
     PRIMARY KEY (id)
 );
@@ -25,7 +25,7 @@ CREATE TABLE Available_date_time
 (
     id            SERIAL      NOT NULL,
     restaurant_id bigint      NOT NULL,
-    date_time     timestamptz NOT NULL,
+    date_time     timestamp NOT NULL,
     booked        bool        NOT NULL default false,
     PRIMARY KEY (id)
 );
@@ -95,7 +95,7 @@ ALTER TABLE Restaurant_administrator
     ADD CONSTRAINT Restaurant_administrator_fk1 FOREIGN KEY (restaurant_id) REFERENCES Restaurant (id);
 
 ALTER TABLE Booking
-    ADD CONSTRAINT Date_time_fk0 FOREIGN KEY (date_time_id) REFERENCES Available_date_time (id);
+    ADD CONSTRAINT Date_time_fk0 FOREIGN KEY (date_id) REFERENCES Available_date_time (id);
 ALTER TABLE Available_date_time
     ADD CONSTRAINT Restaurant_fk0 FOREIGN KEY (restaurant_id) REFERENCES Restaurant (id);
 

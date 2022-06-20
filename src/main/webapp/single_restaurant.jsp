@@ -49,6 +49,7 @@
                                             <c:choose>
                                                 <c:when test="${time.booked == false}">
                                                     <input type="submit" class="btn btn-outline-secondary input_time" value="${time.getTime()}" name="time">
+                                                    <input type="hidden" name="dateTime" value="${time.getId()}">
                                                 </c:when>
                                                 <c:otherwise>
                                                     <input type="submit" class="btn btn-outline-secondary input_time" value="${time.getTime()}" disabled>

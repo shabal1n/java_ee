@@ -18,8 +18,26 @@ public class LanguageFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         String locale = req.getParameter("sessionLocale");
-        if (req.getParameter("sessionLocale") != null) {
+        User user = (User) req.getSession().getAttribute("user");
+        if(locale != null) {
             req.getSession().setAttribute("language", locale);
+            if(user != null) {
+                if(user.getLocalId() == 1) {
+                    user.setLocalId(2);
+                } else {
+                    user.setLocalId(1);
+                }
+                //here i update user in db
+            }
+        }
+        if(user != null) {
+            req.getSession().setAttribute("language", user.getLocalName());
+        } else {
+            if (locale != null) {
+                req.getSession().setAttribute("language", locale);
+            } else {
+                req.getSession().setAttribute("language", "ru");
+            }
         }
         chain.doFilter(request, response);
     }

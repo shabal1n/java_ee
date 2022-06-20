@@ -108,6 +108,18 @@ public class AvailableDateTimeDAO implements AvailableDateTimeDAOInterface<Avail
 
     @Override
     public void update(AvailableDateTime availableDateTime) throws SQLException {
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+            PreparedStatement statement = conn.prepareStatement(SqlQueries.UPDATE_AVAILABLE);
+            statement.setBoolean(1, availableDateTime.isBooked());
+            statement.setLong(2, availableDateTime.getId());
 
+            statement.close();
+            connectionPool.returnConnection(conn);
+        } catch (Exception e) {
+            if (conn != null) conn.close();
+            LOGGER.error(e);
+        }
     }
 }

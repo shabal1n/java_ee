@@ -2,6 +2,7 @@ package com.bookout.service;
 
 import com.bookout.database.dao.RestaurantDAO;
 import com.bookout.database.daointerfaces.RestaurantDAOInterface;
+import com.bookout.enitiy.Local;
 import com.bookout.enitiy.Restaurant;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,6 +25,8 @@ public class CategoriesService implements Service {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;
         String category = request.getParameter("category_name");
+        Local local = new Local();
+        int local_id = local.getLocalId((String) request.getSession().getAttribute("language"));
         int category_id = 0;
         switch (category) {
             case "italian":
@@ -42,7 +45,7 @@ public class CategoriesService implements Service {
                 category_id = 5;
                 break;
         }
-        List<Restaurant> restaurants = restaurantDAO.getRestaurantsByCategoryId(category_id);
+        List<Restaurant> restaurants = restaurantDAO.getRestaurantsByCategoryId(category_id, local_id);
 
         request.setAttribute("restaurants", restaurants);
         dispatcher = request.getRequestDispatcher(CATEGORIES_JSP);

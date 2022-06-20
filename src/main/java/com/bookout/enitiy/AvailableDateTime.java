@@ -48,4 +48,8 @@ public class AvailableDateTime implements Serializable {
         Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateTime);
         return new SimpleDateFormat("H:mm").format(date);
     }
+
+    public Timestamp getTimestamp() {
+        return Timestamp.valueOf(dateTime);
+    }
 }

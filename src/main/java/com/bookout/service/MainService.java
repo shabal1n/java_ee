@@ -2,6 +2,7 @@ package com.bookout.service;
 
 import com.bookout.database.dao.RestaurantDAO;
 import com.bookout.database.daointerfaces.RestaurantDAOInterface;
+import com.bookout.enitiy.Local;
 import com.bookout.enitiy.Restaurant;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,7 +27,10 @@ public class MainService implements Service {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;
+        Local local = new Local();
+        int local_id = local.getLocalId((String) request.getSession().getAttribute("language"));
         List<Restaurant> restaurants = restaurantsDAO.findAll();
+        //TODO change to findAllByLocal()
         restaurants.sort((o1, o2) -> {
             if (o1.getRating() < o2.getRating())
                 return 1;
