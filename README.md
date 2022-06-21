@@ -1,6 +1,6 @@
 # EPAM JavaEE project
-##Database diagram
-![DB](https://user-images.githubusercontent.com/40146504/174717697-5f6b973f-e85a-4371-8dec-eee52c58c0ec.png)
+# Database diagram
+![Uploading Снимок экрана 2022-06-21 в 10.42.22.png…]()
 ## Deployment
 1. Clone the project https://github.com/shabal1n/java_ee
 2. Download Apache Tomcat 9.0.64 https://tomcat.apache.org/download-90.cgi
