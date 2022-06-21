@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Restaurant implements Serializable {
     private int id;
-
     private int localItemId;
     private int categoryId;
     private String name;

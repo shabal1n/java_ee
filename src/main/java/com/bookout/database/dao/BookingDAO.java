@@ -1,6 +1,6 @@
 package com.bookout.database.dao;
 
-import com.bookout.database.daointerfaces.BookingDAOInterface;
+import com.bookout.database.daointerfaces.ObjectInterface;
 import com.bookout.enitiy.Booking;
 import com.bookout.util.SqlQueries;
 import org.apache.logging.log4j.LogManager;
@@ -15,25 +15,9 @@ import java.util.List;
 
 import static com.bookout.util.SqlQueries.connectionPool;
 
-public class BookingDAO implements BookingDAOInterface<Booking> {
+public class BookingDAO implements ObjectInterface<Booking> {
     private static final Logger LOGGER = LogManager.getLogger(BookingDAO.class);
 
-    @Override
-    public Booking getByRestaurantIdAndDate(int restaurantId, String date) {
-        return null;
-    }
-
-    @Override
-    public List<Booking> getBookingByUserId(long id) throws SQLException {
-        List<Booking> bookings = findAll();
-        List<Booking> res = new ArrayList<>();
-        for (int i = 0; i < bookings.size(); i++) {
-            if(bookings.get(i).getUserId() == id) {
-                res.add(bookings.get(i));
-            }
-        }
-        return res;
-    }
 
     @Override
     public void create(Booking booking) throws SQLException {

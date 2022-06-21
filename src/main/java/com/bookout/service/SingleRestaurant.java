@@ -5,7 +5,6 @@ import com.bookout.database.dao.RestaurantDAO;
 import com.bookout.database.daointerfaces.AvailableDateTimeDAOInterface;
 import com.bookout.database.daointerfaces.RestaurantDAOInterface;
 import com.bookout.enitiy.AvailableDateTime;
-import com.bookout.enitiy.Local;
 import com.bookout.enitiy.Restaurant;
 import com.bookout.enitiy.User;
 import org.apache.logging.log4j.LogManager;
@@ -20,6 +19,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
+import static com.bookout.util.Constants.local;
 import static com.bookout.util.PageNames.SINGLE_RESTAURANT;
 import static com.bookout.util.Pages.LOGIN_PAGE;
 
@@ -34,7 +34,6 @@ public class SingleRestaurant implements Service {
         if(user != null) {
             RequestDispatcher dispatcher;
             long restaurantId = Long.parseLong(request.getParameter("id"));
-            Local local = new Local();
             int local_id = local.getLocalId((String) request.getSession().getAttribute("language"));
 
             Restaurant currentRestaurant = restaurantDAO.findByLocal(restaurantId, local_id);

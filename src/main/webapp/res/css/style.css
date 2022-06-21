@@ -24,12 +24,12 @@ body {
 /* line 12, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_common.scss */
 input:hover, input:focus {
   outline: none !important;
-  box-shadow: 0px 0px 0px 0px transparent !important;
+  box-shadow: 0 0 0 0 transparent !important;
 }
 
 /* line 16, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_common.scss */
 .form-control:focus {
-  box-shadow: 0 0 0 0rem transparent !important;
+  box-shadow: 0 0 0 0 transparent !important;
 }
 
 /* line 19, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_common.scss */
@@ -45,14 +45,14 @@ input:hover, input:focus {
 
 /* line 26, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_common.scss */
 .section_padding {
-  padding: 140px 0px;
+  padding: 140px 0;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
 
   /* line 26, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_common.scss */
   .section_padding {
-    padding: 80px 0px;
+    padding: 80px 0;
   }
 }
 
@@ -60,7 +60,7 @@ input:hover, input:focus {
 
   /* line 26, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_common.scss */
   .section_padding {
-    padding: 70px 0px;
+    padding: 70px 0;
   }
 }
 
@@ -68,7 +68,7 @@ input:hover, input:focus {
 
   /* line 26, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_common.scss */
   .section_padding {
-    padding: 70px 0px;
+    padding: 70px 0;
   }
 }
 
@@ -76,7 +76,7 @@ input:hover, input:focus {
 
   /* line 26, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_common.scss */
   .section_padding {
-    padding: 70px 0px;
+    padding: 70px 0;
   }
 }
 
@@ -206,7 +206,7 @@ p {
   font-family: "Montserrat", sans-serif;
   line-height: 1.7;
   font-size: 15px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   color: #555555;
 }
 
@@ -548,7 +548,7 @@ ul {
   width: auto;
   display: inline-block;
   background: #fff;
-  padding: 0px 50px;
+  padding: 0 50px;
   color: #fff;
   font-size: 13px;
   font-weight: 500;
@@ -801,7 +801,7 @@ ul {
 
 /* line 24, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .blog_right_sidebar .btn_4 {
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 /* line 28, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
@@ -812,7 +812,7 @@ ul {
 
 /* line 32, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .single-blog:hover {
-  box-shadow: 0px 10px 20px 0px rgba(42, 34, 123, 0.1);
+  box-shadow: 0 10px 20px 0 rgba(42, 34, 123, 0.1);
 }
 
 /* line 36, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
@@ -1029,7 +1029,7 @@ ul {
 .l_blog_item .l_blog_text h4 {
   font-size: 18px;
   border-bottom: 1px solid #eeeeee;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   padding-bottom: 20px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -1037,7 +1037,7 @@ ul {
 
 /* line 251, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .l_blog_item .l_blog_text p {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   padding-top: 20px;
 }
 
@@ -1062,7 +1062,7 @@ ul {
 
 /* line 278, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .causes_slider .owl-dots .owl-dot:last-child {
-  margin-right: 0px;
+  margin-right: 0;
 }
 
 /* line 289, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
@@ -1078,9 +1078,9 @@ ul {
 /* line 295, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .causes_item .causes_img .c_parcent {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
-  left: 0px;
+  left: 0;
   height: 3px;
   background: rgba(255, 255, 255, 0.5);
 }
@@ -1090,8 +1090,8 @@ ul {
   width: 70%;
   height: 3px;
   position: absolute;
-  left: 0px;
-  bottom: 0px;
+  left: 0;
+  bottom: 0;
 }
 
 /* line 311, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
@@ -1099,9 +1099,9 @@ ul {
   content: "75%";
   position: absolute;
   right: -10px;
-  bottom: 0px;
+  bottom: 0;
   color: #fff;
-  padding: 0px 5px;
+  padding: 0 5px;
 }
 
 /* line 324, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
@@ -1122,7 +1122,7 @@ ul {
   font-size: 14px;
   line-height: 24px;
   font-weight: 300;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 /* line 350, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
@@ -1175,7 +1175,7 @@ ul {
 /* line 396, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .single-recent-blog-post .details .sec_h4 {
   line-height: 24px;
-  padding: 10px 0px 13px;
+  padding: 10px 0 13px;
   transition: all 0.3s linear;
 }
 
@@ -1261,7 +1261,7 @@ ul {
 
 /* line 480, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .categories_post .categories_details h5 {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   font-size: 18px;
   line-height: 26px;
   text-transform: uppercase;
@@ -1274,12 +1274,12 @@ ul {
   font-weight: 300;
   font-size: 14px;
   line-height: 26px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 /* line 505, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .categories_post .categories_details .border_line {
-  margin: 10px 0px;
+  margin: 10px 0;
   background: #fff;
   width: 100%;
   height: 1px;
@@ -1299,7 +1299,7 @@ ul {
 /* line 533, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .blog_details {
   padding: 30px 0 20px 10px;
-  box-shadow: 0px 10px 20px 0px rgba(221, 221, 221, 0.3);
+  box-shadow: 0 10px 20px 0 rgba(221, 221, 221, 0.3);
 }
 
 @media (min-width: 768px) {
@@ -1557,7 +1557,7 @@ ul {
 
 /* line 770, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .blog_right_sidebar .post_category_widget .cat-list li a p {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 /* line 776, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
@@ -1594,7 +1594,7 @@ ul {
 .blog_right_sidebar .popular_post_widget .post_item .media-body p {
   font-size: 14px;
   line-height: 21px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 /* line 820, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
@@ -1647,7 +1647,7 @@ ul {
   width: 100%;
   height: 1px;
   background: #eeeeee;
-  margin: 30px 0px;
+  margin: 30px 0;
 }
 
 /* line 980, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
@@ -1893,7 +1893,7 @@ ul {
 
 /* line 1226, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .single-post-area .navigation-area p {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 /* line 1230, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
@@ -1984,7 +1984,7 @@ ul {
 
   /* line 1303, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
   .single-post-area .sidebar-widgets {
-    padding-bottom: 0px;
+    padding-bottom: 0;
   }
 }
 
@@ -2013,7 +2013,7 @@ ul {
 /* line 1328, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .comments-area h5 {
   font-size: 16px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 /* line 1337, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
@@ -2023,7 +2023,7 @@ ul {
 
 /* line 1340, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .comments-area .comment-list:last-child {
-  padding-bottom: 0px;
+  padding-bottom: 0;
 }
 
 /* line 1344, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
@@ -2107,28 +2107,28 @@ ul {
 
 /* line 1424, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .comment-form .name {
-  padding-left: 0px;
+  padding-left: 0;
 }
 
 @media (max-width: 767px) {
 
   /* line 1424, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
   .comment-form .name {
-    padding-right: 0px;
+    padding-right: 0;
     margin-bottom: 1rem;
   }
 }
 
 /* line 1433, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
 .comment-form .email {
-  padding-right: 0px;
+  padding-right: 0;
 }
 
 @media (max-width: 991px) {
 
   /* line 1433, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog.scss */
   .comment-form .email {
-    padding-left: 0px;
+    padding-left: 0;
   }
 }
 
@@ -2204,8 +2204,8 @@ ul {
 /* line 10, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_single_blog.scss */
 .single_blog_post .single_blog .single_appartment_content {
   padding: 38px 38px 23px;
-  border: 0px solid #fdcb9e;
-  box-shadow: 0px 10px 20px 0px rgba(221, 221, 221, 0.3);
+  border: 0 solid #fdcb9e;
+  box-shadow: 0 10px 20px 0 rgba(221, 221, 221, 0.3);
 }
 
 /* line 14, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_single_blog.scss */
@@ -2266,13 +2266,13 @@ ul {
 
 /* line 13, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_menu.scss */
 .main_menu .navbar-brand {
-  padding-top: 0rem;
-  padding-bottom: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* line 18, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_menu.scss */
 .main_menu .navbar {
-  padding: 0px;
+  padding: 0;
 }
 
 @media (max-width: 991px) {
@@ -2338,7 +2338,7 @@ ul {
   z-index: 9999 !important;
   width: 100%;
   background-color: #d6ad86;
-  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
   top: 0;
 }
 
@@ -2359,7 +2359,7 @@ ul {
 
 /* line 82, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_menu.scss */
 .menu_fixed .main-menu-item {
-  padding-right: 0px;
+  padding-right: 0;
 }
 
 /* line 86, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_menu.scss */
@@ -2369,7 +2369,7 @@ ul {
 
 /* line 91, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_menu.scss */
 .dropdown-menu {
-  border: 0px solid rgba(0, 0, 0, 0.15) !important;
+  border: 0 solid rgba(0, 0, 0, 0.15) !important;
   background-color: #fafafa;
 }
 
@@ -2489,7 +2489,7 @@ ul {
   /* line 16, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_banner.scss */
   .banner_part .banner_text {
     text-align: center;
-    padding-top: 0px;
+    padding-top: 0;
     height: 700px;
   }
 }
@@ -2584,7 +2584,7 @@ ul {
   z-index: -1;
   background: url(../img/about_overlay.png) bottom right no-repeat;
   background-size: 15% 65%;
-  right: 0px;
+  right: 0;
 }
 
 @media (max-width: 576px) {
@@ -2730,7 +2730,7 @@ ul {
 .about_part .about_part_iner {
   background-color: #fff;
   padding: 70px;
-  box-shadow: 0px 20px 40px 0px rgba(221, 221, 221, 0.3);
+  box-shadow: 0 20px 40px 0 rgba(221, 221, 221, 0.3);
 }
 
 @media (max-width: 991px) {
@@ -2947,14 +2947,14 @@ ul {
 /**************** food_menu css start ****************/
 /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_food_menu.scss */
 .food_menu {
-  padding: 140px 0px 90px;
+  padding: 140px 0 90px;
 }
 
 @media (max-width: 576px) {
 
   /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_food_menu.scss */
   .food_menu {
-    padding: 70px 0px 50px;
+    padding: 70px 0 50px;
   }
 }
 
@@ -2962,7 +2962,7 @@ ul {
 
   /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_food_menu.scss */
   .food_menu {
-    padding: 70px 0px 50px;
+    padding: 70px 0 50px;
   }
 }
 
@@ -2970,7 +2970,7 @@ ul {
 
   /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_food_menu.scss */
   .food_menu {
-    padding: 70px 0px 50px;
+    padding: 70px 0 50px;
   }
 }
 
@@ -2978,7 +2978,7 @@ ul {
 
   /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_food_menu.scss */
   .food_menu {
-    padding: 70px 0px 40px;
+    padding: 70px 0 40px;
   }
 }
 
@@ -3010,7 +3010,7 @@ ul {
 
   /* line 27, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_food_menu.scss */
   .food_menu .single_food_item img {
-    border-right: 0px solid #f6f5f1;
+    border-right: 0 solid #f6f5f1;
     margin: 0 auto;
     display: block;
     margin-right: auto !important;
@@ -3303,6 +3303,7 @@ h6 {
 }
 
 /* line 188, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
+/*noinspection CssInvalidPropertyValue*/
 .genric-btn.arrow {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -3514,6 +3515,7 @@ h6 {
 }
 
 /* line 339, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
+/*noinspection CssInvalidPropertyValue*/
 .genric-btn.disable {
   color: #222222, 0.3;
   background: #f9f9ff;
@@ -3536,7 +3538,7 @@ h6 {
 /* line 357, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
 .progress-table {
   background: #f9f9ff;
-  padding: 15px 0px 30px 0px;
+  padding: 15px 0 30px 0;
   min-width: 800px;
 }
 
@@ -3602,7 +3604,7 @@ h6 {
 /* line 404, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
 .progress-table .table-row .percentage .progress {
   width: 80%;
-  border-radius: 0px;
+  border-radius: 0;
   background: transparent;
 }
 
@@ -3881,7 +3883,7 @@ h6 {
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
-  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
@@ -3956,7 +3958,7 @@ h6 {
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
-  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
@@ -4036,7 +4038,7 @@ h6 {
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
-  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
@@ -4322,7 +4324,7 @@ h6 {
 /* line 1001, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
 .default-select .nice-select {
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   height: 40px;
   background: #f9f9ff;
   padding-left: 20px;
@@ -4333,10 +4335,10 @@ h6 {
 .default-select .nice-select .list {
   margin-top: 0;
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: none;
   width: 100%;
-  padding: 10px 0 10px 0px;
+  padding: 10px 0 10px 0;
 }
 
 /* line 1015, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
@@ -4384,7 +4386,7 @@ h6 {
 /* line 1045, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
 .form-select .nice-select {
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   height: 40px;
   background: #f9f9ff;
   padding-left: 45px;
@@ -4396,10 +4398,10 @@ h6 {
 .form-select .nice-select .list {
   margin-top: 0;
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: none;
   width: 100%;
-  padding: 10px 0 10px 0px;
+  padding: 10px 0 10px 0;
 }
 
 /* line 1060, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
@@ -4641,7 +4643,7 @@ h6 {
 /* line 17, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog_part.scss */
 .blog_item_section .single_blog_item:hover .single_blog_text {
   border: 1px solid transparent;
-  box-shadow: 0px 15px 30px rgba(115, 113, 127, 0.1);
+  box-shadow: 0 15px 30px rgba(115, 113, 127, 0.1);
   background-color: #fff;
 }
 
@@ -4670,7 +4672,7 @@ h6 {
 .blog_item_section .single_blog_text {
   padding: 40px 30px;
   border: 1px solid #e7e7e7;
-  border-radius: 100px 0px 623px 77px / 0px 50px 128px 58px;
+  border-radius: 100px 0 623px 77px / 0 50px 128px 58px;
   background-color: #fff;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -4757,7 +4759,7 @@ h6 {
   line-height: 1.458;
   font-weight: 700;
   margin-top: 20px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 /* line 105, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_blog_part.scss */
@@ -4795,10 +4797,11 @@ h6 {
 /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_copyright_part.scss */
 .copyright_part {
   background-color: #303030;
-  padding: 26px 0px;
+  padding: 26px 0;
 }
 
 /* line 5, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_copyright_part.scss */
+/*noinspection CssInvalidPropertyValue*/
 .copyright_part p {
   color: #8a8a8a;
   font-family: 300;
@@ -4869,7 +4872,7 @@ h6 {
 /* line 65, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_copyright_part.scss */
 .copyright_part span.ti-heart {
   font-size: 12px;
-  margin: 0px 2px;
+  margin: 0 2px;
 }
 
 /*=================== contact banner start ====================*/
@@ -4928,7 +4931,7 @@ h6 {
 
 /* line 54, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_contact.scss */
 .form-contact .contact-section .btn_4 {
-  margin-bottom: 0px !important;
+  margin-bottom: 0 !important;
 }
 
 /* line 58, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_contact.scss */
@@ -4968,7 +4971,7 @@ h6 {
   top: 36%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%) !important;
-  margin: 0px;
+  margin: 0;
   max-width: 500px;
   width: 100%;
 }
@@ -4987,7 +4990,7 @@ h6 {
   position: absolute;
   right: -15px;
   top: -15px;
-  padding: 0px;
+  padding: 0;
   color: #fff;
   opacity: 1;
   cursor: pointer;
@@ -5152,6 +5155,7 @@ h6 {
 }
 
 /* line 188, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
+/*noinspection CssInvalidPropertyValue*/
 .genric-btn.arrow {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -5363,6 +5367,7 @@ h6 {
 }
 
 /* line 339, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
+/*noinspection CssInvalidPropertyValue*/
 .genric-btn.disable {
   color: #222222, 0.3;
   background: #f9f9ff;
@@ -5385,7 +5390,7 @@ h6 {
 /* line 357, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
 .progress-table {
   background: #f9f9ff;
-  padding: 15px 0px 30px 0px;
+  padding: 15px 0 30px 0;
   min-width: 800px;
 }
 
@@ -5451,7 +5456,7 @@ h6 {
 /* line 404, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
 .progress-table .table-row .percentage .progress {
   width: 80%;
-  border-radius: 0px;
+  border-radius: 0;
   background: transparent;
 }
 
@@ -5730,7 +5735,7 @@ h6 {
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
-  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
@@ -5805,7 +5810,7 @@ h6 {
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
-  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
@@ -5885,7 +5890,7 @@ h6 {
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
-  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
@@ -6171,7 +6176,7 @@ h6 {
 /* line 1001, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
 .default-select .nice-select {
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   height: 40px;
   background: #f9f9ff;
   padding-left: 20px;
@@ -6182,10 +6187,10 @@ h6 {
 .default-select .nice-select .list {
   margin-top: 0;
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: none;
   width: 100%;
-  padding: 10px 0 10px 0px;
+  padding: 10px 0 10px 0;
 }
 
 /* line 1015, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
@@ -6233,7 +6238,7 @@ h6 {
 /* line 1045, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
 .form-select .nice-select {
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   height: 40px;
   background: #f9f9ff;
   padding-left: 45px;
@@ -6245,10 +6250,10 @@ h6 {
 .form-select .nice-select .list {
   margin-top: 0;
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: none;
   width: 100%;
-  padding: 10px 0 10px 0px;
+  padding: 10px 0 10px 0;
 }
 
 /* line 1060, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_elements.scss */
@@ -6402,26 +6407,26 @@ h6 {
 
 /* line 48, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_breadcrumb.scss */
 .breadcrumb .breadcrumb_iner .breadcrumb_iner_item span {
-  margin: 0px 5px;
+  margin: 0 5px;
   font-size: 12px;
 }
 
 /* line 55, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_breadcrumb.scss */
 .breadcrumb {
-  margin-bottom: 0px !important;
+  margin-bottom: 0 !important;
 }
 
 /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_footer.scss */
 .footer-area {
   background-color: #1c1a18;
-  padding: 100px 0px 25px;
+  padding: 100px 0 25px;
 }
 
 @media (max-width: 991px) {
 
   /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_footer.scss */
   .footer-area {
-    padding: 70px 0px 30px;
+    padding: 70px 0 30px;
   }
 }
 
@@ -6496,7 +6501,7 @@ h6 {
 
 /* line 49, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_footer.scss */
 .footer-area .single-footer-widget ul li:last-child {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 /* line 54, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_footer.scss */
@@ -6516,7 +6521,7 @@ h6 {
   font-size: 13px;
   padding: 10px 20px;
   color: #999999;
-  border: 0px solid transparent;
+  border: 0 solid transparent;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -6531,8 +6536,8 @@ h6 {
   background-color: #d6ad86;
   color: #fff;
   border-radius: 0;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   padding: 8px 20px;
   border: 0;
   font-size: 12px;
@@ -6572,7 +6577,7 @@ h6 {
 
 /* line 105, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_footer.scss */
 .footer-area .contact_info:last-child {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 /* line 108, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_footer.scss */
@@ -6588,7 +6593,7 @@ h6 {
 
 /* line 116, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_footer.scss */
 .footer-area .form-control {
-  border-radius: 0px !important;
+  border-radius: 0 !important;
   font-size: 13px;
   color: #999999;
   font-weight: 400;
@@ -6606,7 +6611,7 @@ h6 {
   background-color: #d6ad86;
   color: #fff;
   width: 49px;
-  border-radius: 0px;
+  border-radius: 0;
   height: 40px;
 }
 
@@ -6618,7 +6623,7 @@ h6 {
 /* line 137, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_footer.scss */
 .footer-area span.ti-heart {
   font-size: 12px;
-  margin: 0px 2px;
+  margin: 0 2px;
 }
 
 /* line 141, /Applications/MAMP/htdocs/palash/cl/july 2019/july/194 Restaurant/194 Restaurant html/sass/_footer.scss */

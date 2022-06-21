@@ -16,8 +16,6 @@ public class ErrorService implements Service {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;
 
-//        request.setAttribute(TOTAL_PRICE, totalPrice);
-
         dispatcher = request.getRequestDispatcher(MAIN_JSP);
         dispatcher.forward(request, response);
     }

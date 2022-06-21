@@ -2,9 +2,7 @@ package com.bookout.service;
 
 import com.bookout.database.dao.RestaurantDAO;
 import com.bookout.database.daointerfaces.RestaurantDAOInterface;
-import com.bookout.enitiy.Local;
 import com.bookout.enitiy.Restaurant;
-import com.bookout.enitiy.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,7 +16,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.bookout.util.PageNames.PROFILE_JSP;
+import static com.bookout.util.Constants.local;
 import static com.bookout.util.PageNames.SEARCH_JSP;
 
 public class SearchService implements Service {
@@ -27,7 +25,6 @@ public class SearchService implements Service {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;
-        Local local = new Local();
         int localId = local.getLocalId((String) request.getSession().getAttribute("language"));
         String searchText = request.getParameter("search_text");
         List<Restaurant> restaurants = restaurantDAO.findAllByLocal(localId);

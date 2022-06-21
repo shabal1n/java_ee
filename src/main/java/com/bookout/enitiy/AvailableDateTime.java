@@ -1,7 +1,6 @@
 package com.bookout.enitiy;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,9 +46,5 @@ public class AvailableDateTime implements Serializable {
     public String getTime() throws ParseException {
         Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateTime);
         return new SimpleDateFormat("H:mm").format(date);
-    }
-
-    public Timestamp getTimestamp() {
-        return Timestamp.valueOf(dateTime);
     }
 }

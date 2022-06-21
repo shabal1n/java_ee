@@ -173,7 +173,7 @@ VALUES (8, 5, 'Mana', 'https://managreekfusion.com/wp-content/uploads/2021/02/Ma
         'Kasaray batyr, 155', 27, 4.7, 10, 2),
        (1, 1, 'Coffee & GO',
         'https://image.shutterstock.com/image-vector/coffee-shop-badge-logo-beans-250nw-1455694871.jpg',
-        'Карасай батыра, 155', 27, 4.7, 10, 1)
+        'Карасай батыра, 155', 27, 4.7, 10, 1);
 
 
 INSERT INTO available_date_time (restaurant_id, date_time, booked)

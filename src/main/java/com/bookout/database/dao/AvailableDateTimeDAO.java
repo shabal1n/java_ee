@@ -46,12 +46,6 @@ public class AvailableDateTimeDAO implements AvailableDateTimeDAOInterface<Avail
         }
         return list;
     }
-
-    @Override
-    public List<AvailableDateTime> getByRestaurantIdAndDate(int restaurantId, String date) {
-        return null;
-    }
-
     @Override
     public void create(AvailableDateTime availableDateTime) throws SQLException {
         Connection con = null;
@@ -102,7 +96,7 @@ public class AvailableDateTimeDAO implements AvailableDateTimeDAOInterface<Avail
     }
 
     @Override
-    public List<AvailableDateTime> findAll() throws SQLException {
+    public List<AvailableDateTime> findAll() {
         return null;
     }
 

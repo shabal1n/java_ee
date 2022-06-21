@@ -33,6 +33,7 @@ public class ReservationServiceController extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String requestString = request.getServletPath();
+        response.setCharacterEncoding("UTF-8");
         Service service = serviceFactory.getService(requestString);
         try {
             service.execute(request, response);

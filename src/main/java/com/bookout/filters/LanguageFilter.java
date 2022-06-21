@@ -3,11 +3,10 @@ package com.bookout.filters;
 import com.bookout.database.dao.UserDAO;
 import com.bookout.database.daointerfaces.UserDAOInterface;
 import com.bookout.enitiy.User;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -22,6 +21,7 @@ public class LanguageFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse res = (HttpServletResponse) response;
         String locale = req.getParameter("sessionLocale");
         User user = (User) req.getSession().getAttribute("user");
         if(locale != null) {
