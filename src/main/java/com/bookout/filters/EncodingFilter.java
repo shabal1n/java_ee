@@ -20,7 +20,13 @@ public class EncodingFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain next)
             throws IOException, ServletException {
-        request.setCharacterEncoding(encoding);
+        if (request.getCharacterEncoding() == null) {
+            request.setCharacterEncoding(encoding);
+        }
+
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         next.doFilter(request, response);
     }
 

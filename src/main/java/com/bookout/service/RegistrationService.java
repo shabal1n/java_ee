@@ -36,7 +36,8 @@ public class RegistrationService implements Service {
             String phone = request.getParameter("mobile");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            int localeId = getLocaleId(request);
+            String locale = (String) request.getSession().getAttribute("language");
+            int localeId = local.getLocalId(locale);
 
             if(userExists(phone, email) && validateFields(phone, email)) {
                 User user = new User();
@@ -71,11 +72,5 @@ public class RegistrationService implements Service {
         Matcher phoneMatcher = PHONE_PATTERN.matcher(phone);
         Matcher emailMatcher = EMAIL_PATTERN.matcher(email);
         return phoneMatcher.matches() && emailMatcher.matches();
-    }
-
-    private int getLocaleId(HttpServletRequest request) {
-        if(request.getSession().getAttribute("language") == "en")
-            return 2;
-        return 1;
     }
 }

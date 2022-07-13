@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -7,9 +7,10 @@
 
 <fmt:setBundle basename="language"/>
 <fmt:setLocale value="${sessionScope.language}" scope="session"/>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <html lang="${sessionScope.language}">
 <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
     <style>
         section {
             display: flex;
