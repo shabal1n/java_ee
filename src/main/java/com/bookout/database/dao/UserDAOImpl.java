@@ -1,6 +1,5 @@
 package com.bookout.database.dao;
 
-import com.bookout.database.daointerfaces.UserDAOInterface;
 import com.bookout.enitiy.User;
 import com.bookout.util.SqlQueries;
 import org.apache.logging.log4j.LogManager;
@@ -10,14 +9,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.bookout.util.SqlQueries.connectionPool;
 
-public class UserDAO implements UserDAOInterface<User> {
+public class UserDAOImpl implements com.bookout.database.daointerfaces.UserDAO<User> {
 
-    private static final Logger LOGGER = LogManager.getLogger(UserDAO.class);
+    private static final Logger LOGGER = LogManager.getLogger(UserDAOImpl.class);
 
     public void create(User user) throws SQLException {
         Connection conn = null;
@@ -29,7 +26,7 @@ public class UserDAO implements UserDAOInterface<User> {
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getPasswordHash());
             statement.setInt(5, user.getLocalId());
-            statement.setBoolean(6, user.getIsAdmin());
+            statement.setBoolean(6, user.isAdmin());
             int row_counter = statement.executeUpdate();
             if (row_counter != 1)
                 throw new SQLException("Inserted " + row_counter + " rows");
@@ -61,7 +58,7 @@ public class UserDAO implements UserDAOInterface<User> {
                 user.setMobile(resultSet.getString("mobile"));
                 user.setPasswordHash(resultSet.getString("password_hash"));
                 user.setLocalId(resultSet.getInt("local_id"));
-                user.setIsAdmin(resultSet.getBoolean("isadmin"));
+                user.setAdmin(resultSet.getBoolean("is_admin"));
             }
 
             statement.close();
@@ -75,39 +72,6 @@ public class UserDAO implements UserDAOInterface<User> {
     }
 
     @Override
-    public List<User> findAll() throws SQLException {
-        Connection conn = null;
-        List<User> list = null;
-        try {
-            conn = connectionPool.getConnection();
-            PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_ALL_USERS);
-            list = new ArrayList<User>();
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                User user = new User();
-
-                user.setId(resultSet.getLong("id"));
-                user.setFirstName(resultSet.getString("first_name"));
-                user.setEmail(resultSet.getString("email"));
-                user.setMobile(resultSet.getString("mobile"));
-                user.setPasswordHash(resultSet.getString("password_hash"));
-                user.setLocalId(resultSet.getInt("local_id"));
-                user.setIsAdmin(resultSet.getBoolean("isadmin"));
-                list.add(user);
-            }
-
-            statement.close();
-            connectionPool.returnConnection(conn);
-
-        } catch (Exception e) {
-            if (conn != null) conn.close();
-            LOGGER.error(e);
-        }
-        return list;
-    }
-
-    @Override
     public void update(User user) throws SQLException {
         Connection conn = null;
         try {
@@ -118,7 +82,7 @@ public class UserDAO implements UserDAOInterface<User> {
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getPasswordHash());
             statement.setInt(5, user.getLocalId());
-            statement.setBoolean(6, user.getIsAdmin());
+            statement.setBoolean(6, user.isAdmin());
             statement.setLong(7, user.getId());
             statement.executeUpdate();
 
@@ -148,7 +112,7 @@ public class UserDAO implements UserDAOInterface<User> {
                 user.setMobile(resultSet.getString("mobile"));
                 user.setPasswordHash(resultSet.getString("password_hash"));
                 user.setLocalId(resultSet.getInt("local_id"));
-                user.setIsAdmin(resultSet.getBoolean("isadmin"));
+                user.setAdmin(resultSet.getBoolean("is_admin"));
             }
 
             statement.close();
@@ -179,7 +143,7 @@ public class UserDAO implements UserDAOInterface<User> {
                 user.setMobile(resultSet.getString("mobile"));
                 user.setPasswordHash(resultSet.getString("password_hash"));
                 user.setLocalId(resultSet.getInt("local_id"));
-                user.setIsAdmin(resultSet.getBoolean("isadmin"));
+                user.setAdmin(resultSet.getBoolean("is_admin"));
             }
 
             statement.close();

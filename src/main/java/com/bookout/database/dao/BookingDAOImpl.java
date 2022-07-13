@@ -15,8 +15,8 @@ import java.util.List;
 
 import static com.bookout.util.SqlQueries.connectionPool;
 
-public class BookingDAO implements ObjectInterface<Booking> {
-    private static final Logger LOGGER = LogManager.getLogger(BookingDAO.class);
+public class BookingDAOImpl implements ObjectInterface<Booking> {
+    private static final Logger LOGGER = LogManager.getLogger(BookingDAOImpl.class);
 
 
     @Override
@@ -69,34 +69,6 @@ public class BookingDAO implements ObjectInterface<Booking> {
             LOGGER.error(e);
         }
         return booking;
-    }
-
-    @Override
-    public List<Booking> findAll() throws SQLException {
-        Connection conn = null;
-        List<Booking> list = new ArrayList<>();
-        try {
-            conn = connectionPool.getConnection();
-            PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_ALL_BOOKINGS);
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                Booking booking = new Booking();
-                booking.setId(resultSet.getInt("id"));
-                booking.setUserId(resultSet.getInt("user_id"));
-                booking.setRestaurantId(resultSet.getInt("restaurant_id"));
-                booking.setDateId(resultSet.getLong("date_id"));
-                booking.setNumOfPersons(resultSet.getInt("num_of_persons"));
-                list.add(booking);
-            }
-
-            statement.close();
-            connectionPool.returnConnection(conn);
-        } catch (Exception e) {
-            if (conn != null) conn.close();
-            LOGGER.error(e);
-        }
-        return list;
     }
 
     @Override

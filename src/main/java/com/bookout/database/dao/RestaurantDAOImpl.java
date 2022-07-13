@@ -1,6 +1,5 @@
 package com.bookout.database.dao;
 
-import com.bookout.database.daointerfaces.RestaurantDAOInterface;
 import com.bookout.enitiy.Restaurant;
 import com.bookout.util.SqlQueries;
 import org.apache.logging.log4j.LogManager;
@@ -15,8 +14,8 @@ import java.util.List;
 
 import static com.bookout.util.SqlQueries.connectionPool;
 
-public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
-    private static final Logger LOGGER = LogManager.getLogger(RestaurantDAO.class);
+public class RestaurantDAOImpl implements com.bookout.database.daointerfaces.RestaurantDAO<Restaurant> {
+    private static final Logger LOGGER = LogManager.getLogger(RestaurantDAOImpl.class);
 
     @Override
     public void create(Restaurant restaurant) throws SQLException {
@@ -33,9 +32,9 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
             stmt.setDouble(7, restaurant.getRating());
             stmt.setInt(8, restaurant.getCurrFreeSpace());
             stmt.setInt(9, restaurant.getLocalId());
-            int row_counter = stmt.executeUpdate();
-            if (row_counter != 1)
-                throw new SQLException("Inserted " + row_counter + " rows");
+            int rowCounter = stmt.executeUpdate();
+            if (rowCounter != 1)
+                throw new SQLException("Inserted " + rowCounter + " rows");
 
             stmt.close();
             connectionPool.returnConnection(con);
@@ -79,41 +78,6 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
     }
 
     @Override
-    public List<Restaurant> findAll() throws SQLException {
-        Connection conn = null;
-        List<Restaurant> list = null;
-        try {
-            conn = connectionPool.getConnection();
-            PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_ALL_RESTAURANTS);
-            ResultSet resultSet = statement.executeQuery();
-            list = new ArrayList<>();
-
-            while (resultSet.next()) {
-                Restaurant restaurant = new Restaurant();
-                restaurant.setId(resultSet.getInt("id"));
-                restaurant.setLocalItemId(resultSet.getInt("local_item_id"));
-                restaurant.setCategoryId(resultSet.getInt("category_id"));
-                restaurant.setName(resultSet.getString("name"));
-                restaurant.setImageUrl(resultSet.getString("image"));
-                restaurant.setAddress(resultSet.getString("address"));
-                restaurant.setCapacity(resultSet.getInt("capacity"));
-                restaurant.setRating(resultSet.getDouble("rating"));
-                restaurant.setCurrFreeSpace(resultSet.getInt("curr_free_space"));
-                restaurant.setLocalId(resultSet.getInt("local_id"));
-
-                list.add(restaurant);
-            }
-            statement.close();
-            connectionPool.returnConnection(conn);
-
-        } catch (Exception e) {
-            if (conn != null) conn.close();
-            LOGGER.error(e);
-        }
-        return list;
-    }
-
-    @Override
     public void update(Restaurant restaurant) throws SQLException {
         Connection conn = null;
         try {
@@ -130,6 +94,10 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
             stmt.setInt(9, restaurant.getLocalId());
             stmt.setInt(10, restaurant.getId());
 
+            int rowCounter = stmt.executeUpdate();
+            if (rowCounter != 1)
+                throw new SQLException("Inserted " + rowCounter + " rows");
+
             stmt.close();
             connectionPool.returnConnection(conn);
 
@@ -140,14 +108,14 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
     }
 
     @Override
-    public List<Restaurant> getRestaurantsByCategoryId(int id, int local_id) throws SQLException {
+    public List<Restaurant> getRestaurantsByCategoryId(int id, int localId) throws SQLException {
         Connection conn = null;
         List<Restaurant> list = null;
         try {
             conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_RESTAURANTS_CATEGORY);
             statement.setLong(1, id);
-            statement.setInt(2, local_id);
+            statement.setInt(2, localId);
             ResultSet resultSet = statement.executeQuery();
             list = new ArrayList<>();
 
@@ -176,14 +144,14 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
         return list;
     }
 
-    public Restaurant findByLocal(long id, int local_id) throws SQLException {
+    public Restaurant findByLocal(long id, int localId) throws SQLException {
         Connection conn = null;
         Restaurant restaurant = null;
         try {
             conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_RESTAURANT_LOCAL);
             statement.setLong(1, id);
-            statement.setInt(2, local_id);
+            statement.setInt(2, localId);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -209,13 +177,13 @@ public class RestaurantDAO implements RestaurantDAOInterface<Restaurant> {
         return restaurant;
     }
 
-    public List<Restaurant> findAllByLocal(int local_id) throws SQLException {
+    public List<Restaurant> findAllByLocal(int localId) throws SQLException {
         Connection conn = null;
         List<Restaurant> list = null;
         try {
             conn = connectionPool.getConnection();
             PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_ALL_RESTAURANTS_LOCAL);
-            statement.setInt(1, local_id);
+            statement.setInt(1, localId);
             ResultSet resultSet = statement.executeQuery();
             list = new ArrayList<>();
 

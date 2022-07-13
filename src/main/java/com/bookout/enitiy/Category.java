@@ -4,11 +4,14 @@ import java.io.Serializable;
 
 public class Category implements Serializable {
     private int id;
-    private int localItemId;
-    private int name;
+    private String name;
 
-    private int localId;
+    public Category() {}
 
+    public Category(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
     public int getId() {
         return id;
     }
@@ -17,11 +20,11 @@ public class Category implements Serializable {
         this.id = id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 }

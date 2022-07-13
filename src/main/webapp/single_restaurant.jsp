@@ -43,7 +43,7 @@
                                <h3><fmt:message key="restaurant.available"/></h3>
                                 <br>
                                 <div class="single_food_item media" style="width: 100%; border: none">
-                                    <form method="POST" action="${pageContext.request.contextPath}/reserve">
+                                    <form method="GET" action="${pageContext.request.contextPath}/reserve">
                                         <input type="hidden" name="restaurant" value="${restaurant.getId()}">
                                         <c:forEach var="time" items="${date_time}">
                                             <c:choose>

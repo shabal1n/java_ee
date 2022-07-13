@@ -1,14 +1,12 @@
 package com.bookout.service;
 
-import com.bookout.database.dao.AvailableDateTimeDAO;
-import com.bookout.database.dao.BookingDAO;
-import com.bookout.database.dao.RestaurantDAO;
-import com.bookout.database.daointerfaces.AvailableDateTimeDAOInterface;
+import com.bookout.database.dao.AvailableDateTimeDAOImpl;
+import com.bookout.database.dao.BookingDAOImpl;
+import com.bookout.database.dao.RestaurantDAOImpl;
+import com.bookout.database.daointerfaces.AvailableDateTimeDAO;
 import com.bookout.database.daointerfaces.ObjectInterface;
-import com.bookout.database.daointerfaces.RestaurantDAOInterface;
+import com.bookout.database.daointerfaces.RestaurantDAO;
 import com.bookout.enitiy.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,10 +20,9 @@ import static com.bookout.util.PageNames.BOOKING_JSP;
 import static com.bookout.util.Pages.PROFILE_PAGE;
 
 public class BookingService implements Service {
-    private final Logger LOGGER = LogManager.getLogger(BookingService.class);
-    private final ObjectInterface<Booking> bookingDAO = new BookingDAO();
-    private final RestaurantDAOInterface<Restaurant> restaurantDAO = new RestaurantDAO();
-    private final AvailableDateTimeDAOInterface<AvailableDateTime> timeDAO = new AvailableDateTimeDAO();
+    private final ObjectInterface<Booking> bookingDAO = new BookingDAOImpl();
+    private final RestaurantDAO<Restaurant> restaurantDAO = new RestaurantDAOImpl();
+    private final AvailableDateTimeDAO<AvailableDateTime> timeDAO = new AvailableDateTimeDAOImpl();
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {

@@ -1,13 +1,9 @@
 package com.bookout.service;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class ServiceFactory {
-    private static final Logger LOGGER = LogManager.getLogger(ServiceFactory.class);
     private static final Map<String, Service> SERVICE_MAP = new HashMap<>();
     private static final ServiceFactory SERVICE_FACTORY = new ServiceFactory();
 
@@ -22,6 +18,7 @@ public class ServiceFactory {
         SERVICE_MAP.put("/reserve", new BookingService());
         SERVICE_MAP.put("/profile", new ProfileService());
         SERVICE_MAP.put("/search", new SearchService());
+        SERVICE_MAP.put("/admin", new AdminRestaurantService());
     }
 
     public static ServiceFactory getInstance() {
@@ -29,13 +26,15 @@ public class ServiceFactory {
     }
 
     public Service getService(String request) {
-        Service service = SERVICE_MAP.get("/error");
+        Service service = null;
 
         for (Map.Entry<String, Service> pair : SERVICE_MAP.entrySet()) {
             if (request.equalsIgnoreCase(pair.getKey())) {
                 service = SERVICE_MAP.get(pair.getKey());
             }
         }
+        if(service == null) service = SERVICE_MAP.get("/error");
+
         return service;
     }
 }

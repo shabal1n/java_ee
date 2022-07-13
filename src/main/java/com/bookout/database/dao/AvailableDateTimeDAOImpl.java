@@ -1,6 +1,5 @@
 package com.bookout.database.dao;
 
-import com.bookout.database.daointerfaces.AvailableDateTimeDAOInterface;
 import com.bookout.enitiy.AvailableDateTime;
 import com.bookout.util.SqlQueries;
 import org.apache.logging.log4j.LogManager;
@@ -15,8 +14,8 @@ import java.util.List;
 
 import static com.bookout.util.SqlQueries.connectionPool;
 
-public class AvailableDateTimeDAO implements AvailableDateTimeDAOInterface<AvailableDateTime> {
-    private static final Logger LOGGER = LogManager.getLogger(AvailableDateTimeDAO.class);
+public class AvailableDateTimeDAOImpl implements com.bookout.database.daointerfaces.AvailableDateTimeDAO<AvailableDateTime> {
+    private static final Logger LOGGER = LogManager.getLogger(AvailableDateTimeDAOImpl.class);
 
 
     @Override
@@ -93,11 +92,6 @@ public class AvailableDateTimeDAO implements AvailableDateTimeDAOInterface<Avail
             LOGGER.error(e);
         }
         return available;
-    }
-
-    @Override
-    public List<AvailableDateTime> findAll() {
-        return null;
     }
 
     @Override

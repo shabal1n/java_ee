@@ -1,18 +1,20 @@
 package com.bookout.filters;
 
-import com.bookout.database.dao.UserDAO;
-import com.bookout.database.daointerfaces.UserDAOInterface;
+import com.bookout.database.dao.UserDAOImpl;
+import com.bookout.database.daointerfaces.UserDAO;
 import com.bookout.enitiy.User;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class LanguageFilter implements Filter {
 
-    private final UserDAOInterface<User> userDAO = new UserDAO();
+    private final int RUS_LOCALE = 1;
+    private final int ENG_LOCALE = 2;
+    private final UserDAO<User> userDAO = new UserDAOImpl();
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Filter.super.init(filterConfig);
@@ -21,27 +23,27 @@ public class LanguageFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
         String locale = req.getParameter("sessionLocale");
         User user = (User) req.getSession().getAttribute("user");
-        if(locale != null) {
+        if (locale != null) {
             req.getSession().setAttribute("language", locale);
-            if(user != null) {
-                if(user.getLocalId() == 1) {
-                    user.setLocalId(2);
-                } else {
-                    user.setLocalId(1);
-                }
-                req.getSession().setAttribute("user", user);
-                try {
-                    userDAO.update(user);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+
+            if (user.getLocalId() == RUS_LOCALE) {
+                user.setLocalId(ENG_LOCALE);
+            } else {
+                user.setLocalId(RUS_LOCALE);
             }
+            req.getSession().setAttribute("user", user);
+
+            try {
+                userDAO.update(user);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
         } else {
             String sessionLocale = (String) req.getSession().getAttribute("language");
-            if(sessionLocale == null) {
+            if (sessionLocale == null) {
                 req.getSession().setAttribute("language", "ru");
             }
         }

@@ -1,7 +1,7 @@
 package com.bookout.service;
 
-import com.bookout.database.dao.UserDAO;
-import com.bookout.database.daointerfaces.UserDAOInterface;
+import com.bookout.database.dao.UserDAOImpl;
+import com.bookout.database.daointerfaces.UserDAO;
 import com.bookout.enitiy.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +19,7 @@ import static com.bookout.util.PageNames.LOGIN_JSP;
 import static com.bookout.util.Pages.MAIN_PAGE;
 public class LoginService implements Service{
     private static final Logger LOGGER = LogManager.getLogger(LoginService.class);
-    private final UserDAOInterface<User> userDAO = new UserDAO();
+    private final UserDAO<User> userDAO = new UserDAOImpl();
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;
@@ -33,7 +33,7 @@ public class LoginService implements Service{
             if(loginUser != null && loginUser.getPasswordHash().equals(password)) {
                 LOGGER.info("Logged in as " + loginUser.getFirstName());
                 session.setAttribute("user", loginUser);
-                session.setAttribute("admin", loginUser.getIsAdmin());
+                session.setAttribute("admin", loginUser.isAdmin());
                 session.setAttribute("language", loginUser.getLocalName());
                 response.sendRedirect(MAIN_PAGE);
                 return;

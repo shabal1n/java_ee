@@ -9,6 +9,5 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 public interface Service {
-    void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,
-            ParseException, SQLException;
+    void execute(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

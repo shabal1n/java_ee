@@ -6,7 +6,7 @@ CREATE TABLE User_info
     email         VARCHAR(50) UNIQUE NOT NULL,
     password_hash VARCHAR(32)        NOT NULL,
     local_id      INT                NOT NULL,
-    isAdmin       BOOLEAN            NOT NULL,
+    is_admin       BOOLEAN            NOT NULL,
     PRIMARY KEY (id)
 );
 

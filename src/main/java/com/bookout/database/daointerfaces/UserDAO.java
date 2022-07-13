@@ -4,7 +4,7 @@ import com.bookout.enitiy.User;
 
 import java.sql.SQLException;
 
-public interface UserDAOInterface<T> extends ObjectInterface<T> {
+public interface UserDAO<T> extends ObjectInterface<T> {
     User getByEmail(String email) throws SQLException;
     User getByPhone(String phone) throws SQLException;
 }

@@ -98,7 +98,7 @@ public class ConnectionPool {
     }
 
     public synchronized void returnConnection(Connection connection) {
-        if ((connection != null) && (freeConnections.size() <= maxConnection)) {
+        if ((connection != null) && (freeConnections.size() < maxConnection)) {
             try {
                 freeConnections.put(connection);
             } catch (InterruptedException e) {

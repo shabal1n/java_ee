@@ -5,44 +5,30 @@ import com.bookout.service.Service;
 import com.bookout.service.ServiceFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-
-import javax.servlet.ServletException;
 import javax.servlet.http.*;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.text.ParseException;
-
 
 
 public class ReservationServiceController extends HttpServlet {
     private final Logger LOGGER = LogManager.getLogger(this.getClass().getName());
     private final ServiceFactory serviceFactory = ServiceFactory.getInstance();
 
-    public ReservationServiceController() {
-        super();
-    }
+    public ReservationServiceController() {super();}
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         processRequest(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         processRequest(request, response);
     }
 
-    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         String requestString = request.getServletPath();
-        response.setCharacterEncoding("UTF-8");
         Service service = serviceFactory.getService(requestString);
         try {
             service.execute(request, response);
-        } catch (ParseException | SQLException e) {
+        } catch (Exception e) {
             LOGGER.error(e);
         }
-    }
-
-    public void destroy() {
-
     }
 }

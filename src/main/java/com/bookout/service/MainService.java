@@ -1,10 +1,8 @@
 package com.bookout.service;
 
-import com.bookout.database.dao.RestaurantDAO;
-import com.bookout.database.daointerfaces.RestaurantDAOInterface;
+import com.bookout.database.dao.RestaurantDAOImpl;
+import com.bookout.database.daointerfaces.RestaurantDAO;
 import com.bookout.enitiy.Restaurant;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,9 +18,7 @@ import static com.bookout.util.Constants.local;
 import static com.bookout.util.PageNames.MAIN_JSP;
 
 public class MainService implements Service {
-    private static final Logger LOGGER = LogManager.getLogger(RestaurantsService.class);
-
-    private final RestaurantDAOInterface<Restaurant> restaurantsDAO = new RestaurantDAO();
+    private final RestaurantDAO<Restaurant> restaurantsDAO = new RestaurantDAOImpl();
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
