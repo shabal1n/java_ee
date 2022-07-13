@@ -1,5 +1,6 @@
 package com.bookout.service;
 
+import com.bookout.PasswordHashing;
 import com.bookout.database.dao.UserDAOImpl;
 import com.bookout.database.daointerfaces.UserDAO;
 import com.bookout.enitiy.User;
@@ -39,7 +40,7 @@ public class RegistrationService implements Service {
 
             if(userExists(phone, email) && validateFields(phone, email)) {
                 User user = new User();
-
+                password = PasswordHashing.hash(password);
                 user.setFirstName(userName);
                 user.setEmail(mail);
                 user.setMobile(phone);

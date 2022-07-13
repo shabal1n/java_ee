@@ -24,5 +24,9 @@
         <input type="submit" value="Save">
     </form>
 
+    <button onclick="location.href='http://localhost:8080/reservations'">
+        Show reservations
+    </button>
+
 </body>
 </html>

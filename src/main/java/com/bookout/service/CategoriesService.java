@@ -21,37 +21,14 @@ public class CategoriesService implements Service {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;
-        String category = request.getParameter("category_name");
+        int category = Integer.parseInt(request.getParameter("category_id"));
 
         int local_id = local.getLocalId((String) request.getSession().getAttribute("language"));
 
-        List<Restaurant> restaurants = restaurantDAO.getRestaurantsByCategoryId(categoryId(category), local_id);
+        List<Restaurant> restaurants = restaurantDAO.getRestaurantsByCategoryId(category, local_id);
 
         request.setAttribute("restaurants", restaurants);
         dispatcher = request.getRequestDispatcher(CATEGORIES_JSP);
-        response.setCharacterEncoding("UTF-8");
         dispatcher.forward(request, response);
-    }
-
-    private int categoryId(String category) {
-        int categoryId = 0;
-        switch (category) {
-            case "italian":
-                categoryId = 1;
-                break;
-            case "japanese":
-                categoryId = 2;
-                break;
-            case "european":
-                categoryId = 3;
-                break;
-            case "asian":
-                categoryId = 4;
-                break;
-            case "coffee":
-                categoryId = 5;
-                break;
-        }
-        return categoryId;
     }
 }

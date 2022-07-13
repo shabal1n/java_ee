@@ -10,13 +10,14 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.nio.charset.StandardCharsets;
+
 import static com.bookout.util.Constants.local;
 import static com.bookout.util.PageNames.ADMIN_JSP;
 import static com.bookout.util.PageNames.ERROR_JSP;
 
 public class AdminRestaurantService implements Service {
     RestaurantDAO<Restaurant> restaurantDAO = new RestaurantDAOImpl();
-
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         RequestDispatcher dispatcher;
@@ -33,7 +34,10 @@ public class AdminRestaurantService implements Service {
             int capacity = Integer.parseInt(request.getParameter("capacity"));
 
             if (!imageUrl.isEmpty()) restaurant.setImageUrl(imageUrl);
-            if (!address.isEmpty()) restaurant.setAddress(address);
+            if (!address.isEmpty()) {
+                String encMessage = new String(address.getBytes(), StandardCharsets.UTF_8);
+                restaurant.setAddress(encMessage);
+            }
             if (capacity != 0) restaurant.setCapacity(capacity);
 
             restaurantDAO.update(restaurant);

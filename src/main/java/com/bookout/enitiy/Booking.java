@@ -1,6 +1,12 @@
 package com.bookout.enitiy;
 
+import com.bookout.database.dao.AvailableDateTimeDAOImpl;
+import com.bookout.database.dao.UserDAOImpl;
+import com.bookout.database.daointerfaces.AvailableDateTimeDAO;
+import com.bookout.database.daointerfaces.UserDAO;
+
 import java.io.Serializable;
+import java.sql.SQLException;
 
 public class Booking implements Serializable {
     private int id;
@@ -47,5 +53,24 @@ public class Booking implements Serializable {
 
     public void setNumOfPersons(int numOfPersons) {
         this.numOfPersons = numOfPersons;
+    }
+
+    public String getUserName() throws SQLException {
+        UserDAO<User> userDAO = new UserDAOImpl();
+        User user = userDAO.find(this.id);
+        return user.getFirstName();
+    }
+
+    public String getUserPhone() throws SQLException {
+        UserDAO<User> userDAO = new UserDAOImpl();
+        User user = userDAO.find(this.id);
+        return user.getMobile();
+    }
+
+    public String getDateAndTime() throws SQLException {
+        AvailableDateTimeDAO<AvailableDateTime> dateDAO = new AvailableDateTimeDAOImpl();
+        AvailableDateTime date = dateDAO.find(this.date_id);
+
+        return date.getDateTime();
     }
 }

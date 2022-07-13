@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
+import static com.bookout.util.PageNames.ERROR_JSP;
 import static com.bookout.util.PageNames.MAIN_JSP;
-
 
 public class ErrorService implements Service {
     @Override

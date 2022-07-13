@@ -1,5 +1,6 @@
 package com.bookout.service;
 
+import com.bookout.PasswordHashing;
 import com.bookout.database.dao.UserDAOImpl;
 import com.bookout.database.daointerfaces.UserDAO;
 import com.bookout.enitiy.User;
@@ -16,10 +17,11 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import static com.bookout.util.PageNames.LOGIN_JSP;
-import static com.bookout.util.Pages.MAIN_PAGE;
 public class LoginService implements Service{
     private static final Logger LOGGER = LogManager.getLogger(LoginService.class);
     private final UserDAO<User> userDAO = new UserDAOImpl();
+
+    private final String MAIN_PAGE = "/main";
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;
@@ -28,6 +30,7 @@ public class LoginService implements Service{
         if(request.getMethod().equals("POST")) {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
+            password = PasswordHashing.hash(password);
             User loginUser = userDAO.getByEmail(email);
             HttpSession session = request.getSession();
             if(loginUser != null && loginUser.getPasswordHash().equals(password)) {

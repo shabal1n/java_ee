@@ -19,6 +19,7 @@ public class ServiceFactory {
         SERVICE_MAP.put("/profile", new ProfileService());
         SERVICE_MAP.put("/search", new SearchService());
         SERVICE_MAP.put("/admin", new AdminRestaurantService());
+        SERVICE_MAP.put("/reservations", new AdminBookingService());
     }
 
     public static ServiceFactory getInstance() {

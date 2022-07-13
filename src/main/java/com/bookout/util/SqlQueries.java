@@ -7,12 +7,12 @@ public class SqlQueries {
     public static final ConnectionPool connectionPool = ConnectionPool.getInstance();
     //UserDAO queries
     public static final String INSERT_USER =
-            "INSERT INTO user_info(first_name, mobile, email, password_hash, local_id, isadmin) VALUES" +
+            "INSERT INTO user_info(first_name, mobile, email, password_hash, local_id, is_admin) VALUES" +
                     "(?, ?, ?, ?, ?, ?);";
     public static final String FIND_USER = "SELECT * FROM user_info WHERE id = ?;";
     public static final String FIND_ALL_USERS = "SELECT * FROM user_info;";
     public static final String UPDATE_USER = "UPDATE user_info " +
-            "SET first_name = ?, mobile = ?, email = ?, password_hash = ?, local_id = ?, isadmin = ?" +
+            "SET first_name = ?, mobile = ?, email = ?, password_hash = ?, local_id = ?, is_admin = ?" +
             "WHERE id = ?;";
     public static final String FIND_USER_EMAIL = "SELECT * FROM user_info WHERE email = ?;";
     public static final String FIND_USER_PHONE = "SELECT * FROM user_info WHERE mobile = ?;";
@@ -31,7 +31,7 @@ public class SqlQueries {
     public static final String INSERT_BOOKING = "INSERT INTO booking(user_id, restaurant_id, date_id, num_of_persons) VALUES" +
             "(?, ?, ?, ?);";
     public static final String FIND_BOOKING = "SELECT * FROM booking WHERE id = ?;";
-    public static final String FIND_ALL_BOOKINGS = "SELECT * FROM booking;";
+    public static final String FIND_BOOKINGS_BY_RESTAURANT_ID = "SELECT * FROM booking WHERE restaurant_id = ?;";
     //AvailableDateTime queries
     public static final String FIND_AVAILABLE = "SELECT * FROM Available_date_time WHERE id = ?;";
     public static final String INSERT_AVAILABLE = "INSERT INTO Available_date_time(restaurant_id, date_time, booked)" +

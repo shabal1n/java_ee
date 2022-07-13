@@ -12,5 +12,6 @@ public class PageNames {
     public static final String PROFILE_JSP = "/profile.jsp";
     public static final String SEARCH_JSP = "/search.jsp";
     public static final String ADMIN_JSP = "/admin_restaurant.jsp";
+    public static final String ADMIN_BOOKING_JSP = "/admin_booking.jsp";
 
 }

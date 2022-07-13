@@ -17,12 +17,11 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import static com.bookout.util.PageNames.BOOKING_JSP;
-import static com.bookout.util.Pages.PROFILE_PAGE;
-
 public class BookingService implements Service {
     private final ObjectInterface<Booking> bookingDAO = new BookingDAOImpl();
     private final RestaurantDAO<Restaurant> restaurantDAO = new RestaurantDAOImpl();
     private final AvailableDateTimeDAO<AvailableDateTime> timeDAO = new AvailableDateTimeDAOImpl();
+    private final String PROFILE_PAGE = "/profile";
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {

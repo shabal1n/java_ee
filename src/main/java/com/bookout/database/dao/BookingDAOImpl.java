@@ -1,6 +1,6 @@
 package com.bookout.database.dao;
 
-import com.bookout.database.daointerfaces.ObjectInterface;
+import com.bookout.database.daointerfaces.BookingDAO;
 import com.bookout.enitiy.Booking;
 import com.bookout.util.SqlQueries;
 import org.apache.logging.log4j.LogManager;
@@ -15,7 +15,7 @@ import java.util.List;
 
 import static com.bookout.util.SqlQueries.connectionPool;
 
-public class BookingDAOImpl implements ObjectInterface<Booking> {
+public class BookingDAOImpl implements BookingDAO<Booking> {
     private static final Logger LOGGER = LogManager.getLogger(BookingDAOImpl.class);
 
 
@@ -74,5 +74,34 @@ public class BookingDAOImpl implements ObjectInterface<Booking> {
     @Override
     public void update(Booking booking) throws SQLException {
 
+    }
+    @Override
+    public List<Booking> getBookingsByRestaurantId(long restaurantId) throws SQLException {
+        Connection conn = null;
+        List<Booking> bookings = new ArrayList<>();
+        try {
+            conn = connectionPool.getConnection();
+            PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_BOOKINGS_BY_RESTAURANT_ID);
+            statement.setLong(1, restaurantId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Booking booking = new Booking();
+                booking.setId(resultSet.getInt("id"));
+                booking.setUserId(resultSet.getInt("user_id"));
+                booking.setRestaurantId(resultSet.getInt("restaurant_id"));
+                booking.setDateId(resultSet.getLong("date_id"));
+                booking.setNumOfPersons(resultSet.getInt("num_of_persons"));
+                bookings.add(booking);
+            }
+
+            statement.close();
+            connectionPool.returnConnection(conn);
+
+        } catch (Exception e) {
+            if (conn != null) conn.close();
+            LOGGER.error(e);
+        }
+        return bookings;
     }
 }
