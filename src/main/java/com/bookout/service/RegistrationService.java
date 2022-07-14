@@ -1,9 +1,11 @@
 package com.bookout.service;
 
-import com.bookout.PasswordHashing;
+import com.bookout.validation.EmailValidator;
+import com.bookout.validation.UserPasswordHashing;
 import com.bookout.database.dao.UserDAOImpl;
 import com.bookout.database.daointerfaces.UserDAO;
-import com.bookout.enitiy.User;
+import com.bookout.entity.User;
+import com.bookout.validation.PhoneNumberValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,7 +17,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.regex.Matcher;
 
 import static com.bookout.util.Constants.*;
 import static com.bookout.util.PageNames.REGISTRATION_JSP;
@@ -39,9 +40,9 @@ public class RegistrationService implements Service {
             String locale = (String) request.getSession().getAttribute("language");
             int localeId = local.getLocalId(locale);
 
-            if(userExists(phone, email) && validateFields(phone, email)) {
+            if(!userExists(phone, email) && validateFields(phone, email)) {
                 User user = new User();
-                password = PasswordHashing.hash(password);
+                password = UserPasswordHashing.hash(password);
                 user.setFirstName(userName);
                 user.setEmail(mail);
                 user.setMobile(phone);
@@ -63,14 +64,10 @@ public class RegistrationService implements Service {
     }
 
     private boolean userExists(String phone, String email) throws SQLException {
-        User phoneExists = userDAO.getByPhone(phone);
-        User emailExists = userDAO.getByEmail(email);
-        return phoneExists == null && emailExists == null;
+        return PhoneNumberValidator.exists(phone) && EmailValidator.exists(email);
     }
 
     private boolean validateFields(String phone, String email) {
-        Matcher phoneMatcher = PHONE_PATTERN.matcher(phone);
-        Matcher emailMatcher = EMAIL_PATTERN.matcher(email);
-        return phoneMatcher.matches() && emailMatcher.matches();
+        return PhoneNumberValidator.validate(phone) && EmailValidator.validate(email);
     }
 }

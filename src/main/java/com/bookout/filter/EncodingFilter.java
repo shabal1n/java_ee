@@ -1,4 +1,4 @@
-package com.bookout.filters;
+package com.bookout.filter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

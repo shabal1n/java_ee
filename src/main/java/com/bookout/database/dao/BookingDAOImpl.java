@@ -1,8 +1,6 @@
 package com.bookout.database.dao;
 
-import com.bookout.database.daointerfaces.BookingDAO;
-import com.bookout.enitiy.Booking;
-import com.bookout.util.SqlQueries;
+import com.bookout.entity.Booking;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,32 +11,42 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.bookout.util.SqlQueries.connectionPool;
+import static com.bookout.util.Constants.connectionPool;
 
-public class BookingDAOImpl implements BookingDAO<Booking> {
+public class BookingDAOImpl extends BookingDAOAbstract {
     private static final Logger LOGGER = LogManager.getLogger(BookingDAOImpl.class);
+
+    private final String INSERT_BOOKING = "INSERT INTO booking(user_id, restaurant_id, date_id, num_of_persons) VALUES" +
+            "(?, ?, ?, ?);";
+    private final String FIND_BOOKING = "SELECT * FROM booking WHERE id = ?;";
+    private final String FIND_BOOKINGS_BY_RESTAURANT_ID = "SELECT * FROM booking WHERE restaurant_id = ?;";
+
 
 
     @Override
     public void create(Booking booking) throws SQLException {
         Connection con = null;
+        PreparedStatement stmt = null;
         try {
             con = connectionPool.getConnection();
-            PreparedStatement stmt = con.prepareStatement(SqlQueries.INSERT_BOOKING);
+            stmt = con.prepareStatement(INSERT_BOOKING);
             stmt.setLong(1, booking.getUserId());
             stmt.setInt(2, booking.getRestaurantId());
             stmt.setLong(3, booking.getDateId());
-            stmt.setInt(4, booking.getNumOfPersons());
+            stmt.setInt(4, booking.getPersonsCount());
 
-            int row_counter = stmt.executeUpdate();
-            if (row_counter != 1)
-                throw new SQLException("Inserted " + row_counter + " rows");
+            int rowCounter = stmt.executeUpdate();
+            if (rowCounter != 1)
+                throw new SQLException("Inserted " + rowCounter + " rows");
 
-            stmt.close();
-            connectionPool.returnConnection(con);
         } catch (Exception e) {
             if (con != null) con.close();
             LOGGER.error(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+            connectionPool.returnConnection(con);
         }
     }
 
@@ -46,9 +54,10 @@ public class BookingDAOImpl implements BookingDAO<Booking> {
     public Booking find(long id) throws SQLException {
         Connection conn = null;
         Booking booking = null;
+        PreparedStatement statement = null;
         try {
             conn = connectionPool.getConnection();
-            PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_BOOKING);
+            statement = conn.prepareStatement(FIND_BOOKING);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
 
@@ -58,30 +67,29 @@ public class BookingDAOImpl implements BookingDAO<Booking> {
                 booking.setUserId(resultSet.getInt("user_id"));
                 booking.setRestaurantId(resultSet.getInt("restaurant_id"));
                 booking.setDateId(resultSet.getLong("date_id"));
-                booking.setNumOfPersons(resultSet.getInt("num_of_persons"));
+                booking.setPersonsCount(resultSet.getInt("num_of_persons"));
             }
-
-            statement.close();
-            connectionPool.returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();
             LOGGER.error(e);
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+            connectionPool.returnConnection(conn);
         }
         return booking;
     }
 
     @Override
-    public void update(Booking booking) throws SQLException {
-
-    }
-    @Override
-    public List<Booking> getBookingsByRestaurantId(long restaurantId) throws SQLException {
+    public List<Booking> getBookingsByRestaurantId(int restaurantId) throws SQLException {
         Connection conn = null;
         List<Booking> bookings = new ArrayList<>();
+        PreparedStatement statement = null;
         try {
             conn = connectionPool.getConnection();
-            PreparedStatement statement = conn.prepareStatement(SqlQueries.FIND_BOOKINGS_BY_RESTAURANT_ID);
+            statement = conn.prepareStatement(FIND_BOOKINGS_BY_RESTAURANT_ID);
             statement.setLong(1, restaurantId);
             ResultSet resultSet = statement.executeQuery();
 
@@ -91,16 +99,18 @@ public class BookingDAOImpl implements BookingDAO<Booking> {
                 booking.setUserId(resultSet.getInt("user_id"));
                 booking.setRestaurantId(resultSet.getInt("restaurant_id"));
                 booking.setDateId(resultSet.getLong("date_id"));
-                booking.setNumOfPersons(resultSet.getInt("num_of_persons"));
+                booking.setPersonsCount(resultSet.getInt("num_of_persons"));
                 bookings.add(booking);
             }
-
-            statement.close();
-            connectionPool.returnConnection(conn);
 
         } catch (Exception e) {
             if (conn != null) conn.close();
             LOGGER.error(e);
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+            connectionPool.returnConnection(conn);
         }
         return bookings;
     }

@@ -1,8 +1,8 @@
-package com.bookout.filters;
+package com.bookout.filter;
 
 import com.bookout.database.dao.UserDAOImpl;
 import com.bookout.database.daointerfaces.UserDAO;
-import com.bookout.enitiy.User;
+import com.bookout.entity.User;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +38,7 @@ public class LanguageFilter implements Filter {
             try {
                 userDAO.update(user);
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
 
         } else {

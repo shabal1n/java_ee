@@ -2,7 +2,7 @@ package com.bookout.service;
 
 import com.bookout.database.dao.RestaurantDAOImpl;
 import com.bookout.database.daointerfaces.RestaurantDAO;
-import com.bookout.enitiy.Restaurant;
+import com.bookout.entity.Restaurant;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,7 +22,7 @@ public class RestaurantsService implements Service {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;
         int localId = local.getLocalId((String) request.getSession().getAttribute("language"));
-        List<Restaurant> restaurants = restaurantDAO.findAllByLocal(localId);
+        List<Restaurant> restaurants = restaurantDAO.findAllRestaurantsByLocalizationId(localId);
 
         request.setAttribute("restaurants", restaurants);
         dispatcher = request.getRequestDispatcher(RESTAURANTS_JSP);

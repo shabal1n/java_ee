@@ -1,5 +1,6 @@
 package com.bookout.database;
 
+import com.bookout.validation.PasswordEncryption;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,7 +45,7 @@ public class ConnectionPool {
 
     private void setDataForConnection() {
         this.url = properties.getProperty("pool.url");
-        this.password = properties.getProperty("pool.password");
+        this.password = PasswordEncryption.decrypt(properties.getProperty("pool.password"));
         this.user = properties.getProperty("pool.user");
         this.driverDB = properties.getProperty("pool.driver");
     }

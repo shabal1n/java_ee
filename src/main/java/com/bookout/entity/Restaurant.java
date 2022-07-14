@@ -1,8 +1,6 @@
-package com.bookout.enitiy;
+package com.bookout.entity;
 
 import java.io.Serializable;
-
-import static com.bookout.util.Constants.categories;
 
 public class Restaurant implements Serializable {
     private int id;
@@ -13,7 +11,6 @@ public class Restaurant implements Serializable {
     private String address;
     private int capacity;
     private double rating;
-    private int currFreeSpace;
     private int localId;
 
     public int getLocalItemId() {
@@ -86,17 +83,5 @@ public class Restaurant implements Serializable {
 
     public void setRating(double rating) {
         this.rating = rating;
-    }
-
-    public int getCurrFreeSpace() {
-        return currFreeSpace;
-    }
-
-    public void setCurrFreeSpace(int currFreeSpace) {
-        this.currFreeSpace = currFreeSpace;
-    }
-
-    public String getCategoryName() {
-        return categories.get(this.categoryId).getName();
     }
 }

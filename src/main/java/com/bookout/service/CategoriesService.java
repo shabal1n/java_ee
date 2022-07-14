@@ -2,7 +2,7 @@ package com.bookout.service;
 
 import com.bookout.database.dao.RestaurantDAOImpl;
 import com.bookout.database.daointerfaces.RestaurantDAO;
-import com.bookout.enitiy.Restaurant;
+import com.bookout.entity.Restaurant;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

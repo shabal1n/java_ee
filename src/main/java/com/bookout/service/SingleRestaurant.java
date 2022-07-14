@@ -4,9 +4,9 @@ import com.bookout.database.dao.AvailableDateTimeDAOImpl;
 import com.bookout.database.dao.RestaurantDAOImpl;
 import com.bookout.database.daointerfaces.AvailableDateTimeDAO;
 import com.bookout.database.daointerfaces.RestaurantDAO;
-import com.bookout.enitiy.AvailableDateTime;
-import com.bookout.enitiy.Restaurant;
-import com.bookout.enitiy.User;
+import com.bookout.entity.AvailableDateTime;
+import com.bookout.entity.Restaurant;
+import com.bookout.entity.User;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,8 +32,8 @@ public class SingleRestaurant implements Service {
             long restaurantId = Long.parseLong(request.getParameter("id"));
             int local_id = local.getLocalId((String) request.getSession().getAttribute("language"));
 
-            Restaurant currentRestaurant = restaurantDAO.findByLocal(restaurantId, local_id);
-            List<AvailableDateTime> dateTimeList = dateTimeDAO.getByRestaurantId(currentRestaurant.getLocalItemId());
+            Restaurant currentRestaurant = restaurantDAO.findRestaurantByLocalizationId(restaurantId, local_id);
+            List<AvailableDateTime> dateTimeList = dateTimeDAO.getAvailableTimeByRestaurantId(currentRestaurant.getLocalItemId());
             request.setAttribute("restaurant", currentRestaurant);
             request.setAttribute("date_time", dateTimeList);
 

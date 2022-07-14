@@ -1,4 +1,4 @@
-package com.bookout.enitiy;
+package com.bookout.entity;
 
 import java.io.Serializable;
 

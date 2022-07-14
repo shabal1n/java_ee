@@ -3,8 +3,8 @@ package com.bookout.service;
 import com.bookout.database.dao.AdminDAOImpl;
 import com.bookout.database.dao.BookingDAOImpl;
 import com.bookout.database.daointerfaces.BookingDAO;
-import com.bookout.enitiy.Booking;
-import com.bookout.enitiy.User;
+import com.bookout.entity.Booking;
+import com.bookout.entity.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;

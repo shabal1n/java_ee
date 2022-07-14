@@ -1,9 +1,9 @@
 package com.bookout.service;
 
-import com.bookout.PasswordHashing;
+import com.bookout.validation.UserPasswordHashing;
 import com.bookout.database.dao.UserDAOImpl;
 import com.bookout.database.daointerfaces.UserDAO;
-import com.bookout.enitiy.User;
+import com.bookout.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -30,8 +30,8 @@ public class LoginService implements Service{
         if(request.getMethod().equals("POST")) {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            password = PasswordHashing.hash(password);
-            User loginUser = userDAO.getByEmail(email);
+            password = UserPasswordHashing.hash(password);
+            User loginUser = userDAO.getUserByEmail(email);
             HttpSession session = request.getSession();
             if(loginUser != null && loginUser.getPasswordHash().equals(password)) {
                 LOGGER.info("Logged in as " + loginUser.getFirstName());

@@ -42,7 +42,6 @@ CREATE TABLE Restaurant
     address         VARCHAR(70)   NOT NULL,
     capacity        int           NOT NULL,
     rating          real,
-    curr_free_space int           NOT NULL,
     local_id        int           NOT NULL,
     PRIMARY KEY (id)
 );

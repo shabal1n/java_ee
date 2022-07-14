@@ -8,7 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import static com.bookout.util.SqlQueries.connectionPool;
+import static com.bookout.util.Constants.connectionPool;
+
 
 public class AdminDAOImpl implements AdminDAO {
     private static final Logger LOGGER = LogManager.getLogger(AdminDAOImpl.class);
@@ -19,10 +20,11 @@ public class AdminDAOImpl implements AdminDAO {
     @Override
     public int getRestaurantIdByAdminId(long adminId) throws Exception {
         Connection conn = null;
+        PreparedStatement statement = null;
         int restaurantId = 0;
         try {
             conn = connectionPool.getConnection();
-            PreparedStatement statement = conn.prepareStatement(GET_RESTAURANT_ID_BY_ADMIN_ID);
+            statement = conn.prepareStatement(GET_RESTAURANT_ID_BY_ADMIN_ID);
             statement.setLong(1, adminId);
             ResultSet resultSet = statement.executeQuery();
 
@@ -30,12 +32,14 @@ public class AdminDAOImpl implements AdminDAO {
                 restaurantId = resultSet.getInt("restaurant_id");
             }
 
-            statement.close();
-            connectionPool.returnConnection(conn);
-
         } catch (Exception e) {
             if (conn != null) conn.close();
             LOGGER.error(e);
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+            connectionPool.returnConnection(conn);
         }
         if(restaurantId == 0) throw new Exception("Restaurant associated with admin ID not found");
         return restaurantId;

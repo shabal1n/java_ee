@@ -1,4 +1,4 @@
-package com.bookout.enitiy;
+package com.bookout.entity;
 
 import com.bookout.database.dao.AvailableDateTimeDAOImpl;
 import com.bookout.database.dao.UserDAOImpl;
@@ -12,8 +12,8 @@ public class Booking implements Serializable {
     private int id;
     private long userId;
     private int restaurantId;
-    private long date_id;
-    private int numOfPersons;
+    private long dateId;
+    private int personsCount;
 
     public int getId() {
         return id;
@@ -40,21 +40,23 @@ public class Booking implements Serializable {
     }
 
     public long getDateId() {
-        return date_id;
+        return dateId;
     }
 
     public void setDateId(long date) {
-        this.date_id = date;
+        this.dateId = date;
     }
 
-    public int getNumOfPersons() {
-        return numOfPersons;
+    public int getPersonsCount() {
+        return personsCount;
     }
 
-    public void setNumOfPersons(int numOfPersons) {
-        this.numOfPersons = numOfPersons;
+    public void setPersonsCount(int personsCount) {
+        this.personsCount = personsCount;
     }
 
+
+    //методы ниже используются в jsp странице
     public String getUserName() throws SQLException {
         UserDAO<User> userDAO = new UserDAOImpl();
         User user = userDAO.find(this.id);
@@ -69,7 +71,7 @@ public class Booking implements Serializable {
 
     public String getDateAndTime() throws SQLException {
         AvailableDateTimeDAO<AvailableDateTime> dateDAO = new AvailableDateTimeDAOImpl();
-        AvailableDateTime date = dateDAO.find(this.date_id);
+        AvailableDateTime date = dateDAO.find(this.dateId);
 
         return date.getDateTime();
     }

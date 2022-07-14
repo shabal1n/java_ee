@@ -1,6 +1,6 @@
 package com.bookout.service;
 
-import com.bookout.enitiy.User;
+import com.bookout.entity.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

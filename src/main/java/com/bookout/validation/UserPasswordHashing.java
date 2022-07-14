@@ -1,9 +1,9 @@
-package com.bookout;
+package com.bookout.validation;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class PasswordHashing {
+public class UserPasswordHashing {
 
     public static String hash(String password) {
         try {

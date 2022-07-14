@@ -3,8 +3,8 @@ package com.bookout.service;
 import com.bookout.database.dao.AdminDAOImpl;
 import com.bookout.database.dao.RestaurantDAOImpl;
 import com.bookout.database.daointerfaces.RestaurantDAO;
-import com.bookout.enitiy.Restaurant;
-import com.bookout.enitiy.User;
+import com.bookout.entity.Restaurant;
+import com.bookout.entity.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +26,7 @@ public class AdminRestaurantService implements Service {
         User user = (User) request.getSession().getAttribute("user");
         int restaurantId = new AdminDAOImpl().getRestaurantIdByAdminId(user.getId());
         int localId = local.getLocalId((String) request.getSession().getAttribute("language"));
-        Restaurant restaurant = restaurantDAO.findByLocal(restaurantId, localId);
+        Restaurant restaurant = restaurantDAO.findRestaurantByLocalizationId(restaurantId, localId);
 
         if(request.getMethod().equals("POST")) {
             String imageUrl = request.getParameter("image");

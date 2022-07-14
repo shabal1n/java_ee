@@ -1,11 +1,12 @@
-package com.bookout.enitiy;
+package com.bookout.entity;
 
 import java.io.Serializable;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class AvailableDateTime implements Serializable {
+    private final String dateTimePattern = "yyyy-MM-dd HH:mm:ss";
     private long id;
     private long restaurantId;
     private String dateTime;
@@ -43,8 +44,9 @@ public class AvailableDateTime implements Serializable {
         this.booked = booked;
     }
 
-    public String getTime() throws ParseException {
-        Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateTime);
+    public String getTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateTimePattern);
+        LocalDateTime date = LocalDateTime.parse(dateTime, formatter);
         return new SimpleDateFormat("H:mm").format(date);
     }
 }
