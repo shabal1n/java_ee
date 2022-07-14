@@ -14,7 +14,7 @@ public class ServiceFactory {
         SERVICE_MAP.put("/category", new CategoriesService());
         SERVICE_MAP.put("/login", new LoginService());
         SERVICE_MAP.put("/registration", new RegistrationService());
-        SERVICE_MAP.put("/book", new SingleRestaurant());
+        SERVICE_MAP.put("/book", new SingleRestaurantService());
         SERVICE_MAP.put("/reserve", new BookingService());
         SERVICE_MAP.put("/profile", new ProfileService());
         SERVICE_MAP.put("/search", new SearchService());

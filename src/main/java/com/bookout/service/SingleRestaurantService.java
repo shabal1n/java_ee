@@ -20,7 +20,7 @@ import static com.bookout.util.Constants.local;
 import static com.bookout.util.PageNames.SINGLE_RESTAURANT;
 import static com.bookout.util.Pages.LOGIN_PAGE;
 
-public class SingleRestaurant implements Service {
+public class SingleRestaurantService implements Service {
     RestaurantDAO<Restaurant> restaurantDAO = new RestaurantDAOImpl();
     private final AvailableDateTimeDAO<AvailableDateTime> dateTimeDAO = new AvailableDateTimeDAOImpl();
 
@@ -35,7 +35,7 @@ public class SingleRestaurant implements Service {
             Restaurant currentRestaurant = restaurantDAO.findRestaurantByLocalizationId(restaurantId, local_id);
             List<AvailableDateTime> dateTimeList = dateTimeDAO.getAvailableTimeByRestaurantId(currentRestaurant.getLocalItemId());
             request.setAttribute("restaurant", currentRestaurant);
-            request.setAttribute("date_time", dateTimeList);
+            request.setAttribute("dateTime", dateTimeList);
 
 
             dispatcher = request.getRequestDispatcher(SINGLE_RESTAURANT);

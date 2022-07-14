@@ -55,6 +55,48 @@ public class Booking implements Serializable {
         this.personsCount = personsCount;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        final Booking other = (Booking) obj;
+
+        if (this.id != other.id) {
+            return false;
+        }
+
+        if (this.userId != other.getUserId()) {
+            return false;
+        }
+
+        if (this.restaurantId != other.getRestaurantId()) {
+            return false;
+        }
+
+        if (this.dateId != other.getDateId()) {
+            return false;
+        }
+
+        if (this.personsCount != other.getPersonsCount()) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 4;
+        hash = 53 * hash;
+        hash = (int) (53 * hash + this.id + this.userId + this.restaurantId);
+        return hash;
+    }
+
 
     //методы ниже используются в jsp странице
     public String getUserName() throws SQLException {

@@ -45,9 +45,9 @@
                                 <div class="single_food_item media" style="width: 100%; border: none">
                                     <form method="GET" action="${pageContext.request.contextPath}/reserve">
                                         <input type="hidden" name="restaurant" value="${restaurant.getId()}">
-                                        <c:forEach var="time" items="${date_time}">
+                                        <c:forEach var="time" items="${dateTime}">
                                             <c:choose>
-                                                <c:when test="${time.booked == false}">
+                                                <c:when test="${time.isBooked() == false}">
                                                     <input type="submit" class="btn btn-outline-secondary input_time" value="${time.getTime()}" name="time">
                                                     <input type="hidden" name="dateTime" value="${time.getId()}">
                                                 </c:when>

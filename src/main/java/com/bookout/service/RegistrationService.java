@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.bookout.util.Constants.*;
 import static com.bookout.util.PageNames.REGISTRATION_JSP;
@@ -53,6 +55,8 @@ public class RegistrationService implements Service {
                 LOGGER.info("User was created");
                 response.sendRedirect(LOGIN_PAGE);
                 return;
+            } else {
+                request.setAttribute("errorMsg", errorMessage(phone, email));
             }
         }
         dispatcher.forward(request, response);
@@ -69,5 +73,23 @@ public class RegistrationService implements Service {
 
     private boolean validateFields(String phone, String email) {
         return PhoneNumberValidator.validate(phone) && EmailValidator.validate(email);
+    }
+
+    private List<String> errorMessage(String phone, String email) throws SQLException {
+        List<String> error = new ArrayList<>();
+        if (!EmailValidator.validate(email)) {
+            error.add("Invalid e-mail");
+        }
+        if (!PhoneNumberValidator.validate(phone)) {
+            error.add("Invalid phone number");
+        }
+        if(PhoneNumberValidator.exists(phone)) {
+            error.add("Phone number is registered");
+        }
+
+        if(EmailValidator.exists(email)) {
+            error.add("E-mail already registered");
+        }
+        return error;
     }
 }

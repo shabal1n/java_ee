@@ -69,14 +69,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                                        <div class="form-outline flex-fill mb-0">
-                                            <input type="password" id="form3Password2" class="form-control" required/>
-                                            <label class="form-label" for="form3Password2"><fmt:message key="registration.repeat"/></label>
-                                        </div>
-                                    </div>
-
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                         <button type="submit" class="btn btn-primary btn-lg" onclick="validation()"><fmt:message key="login.register"/></button>
                                     </div>
@@ -86,9 +78,12 @@
 
                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                                      class="img-fluid" alt="Sample image">
-
                             </div>
                         </div>
+                        <c:forEach var="msg" items="${errorMsg}">
+                            <p style="color: red">${msg}</p>
+                            <br>
+                        </c:forEach>
                     </div>
                 </div>
             </div>

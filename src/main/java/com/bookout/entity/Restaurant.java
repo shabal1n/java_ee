@@ -1,6 +1,7 @@
 package com.bookout.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Restaurant implements Serializable {
     private int id;
@@ -83,5 +84,63 @@ public class Restaurant implements Serializable {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        final Restaurant other = (Restaurant) obj;
+        if (this.id == other.getId()) {
+            return false;
+        }
+
+        if (this.localItemId != other.getLocalItemId()) {
+            return false;
+        }
+
+        if (this.categoryId != other.getCategoryId()) {
+            return false;
+        }
+
+        if (!Objects.equals(this.name, other.getName())) {
+            return false;
+        }
+
+        if (!Objects.equals(this.image, other.getImageUrl())) {
+            return false;
+        }
+
+        if(!Objects.equals(this.address, other.getAddress())) {
+            return false;
+        }
+
+        if(this.capacity == other.getCapacity()) {
+            return false;
+        }
+
+        if (this.rating == other.getRating()) {
+            return false;
+        }
+
+        if (this.localId == other.getLocalId()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 6;
+        hash = 53 * hash + (this.name != null ? this.name.hashCode() : 0);
+        hash = (int) (53 * hash + this.id + this.address.hashCode());
+        return hash;
     }
 }

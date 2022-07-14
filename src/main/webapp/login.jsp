@@ -53,6 +53,9 @@
             <p><fmt:message key="login.member"/> <a href="registration"><fmt:message key="login.register"/></a></p>
         </div>
     </form>
+    <c:forEach var="error" items="${errorMsg}">
+        <p style="color: red">${error}</p>
+    </c:forEach>
 </div>
 </body>
 </html>
