@@ -24,7 +24,6 @@ import static com.bookout.util.PageNames.LOGIN_JSP;
 public class LoginService implements Service{
     private static final Logger LOGGER = LogManager.getLogger(LoginService.class);
     private final UserDAO<User> userDAO = new UserDAOImpl();
-
     private final String MAIN_PAGE = "/main";
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
