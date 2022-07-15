@@ -52,7 +52,8 @@ public class ConnectionPool {
 
     private Properties getProperties(String configurationFile) {
         Properties properties = new Properties();
-        try(InputStream inputStream = ConnectionPool.class.getClassLoader().getResourceAsStream(configurationFile)) {
+        InputStream inputStream = ConnectionPool.class.getClassLoader().getResourceAsStream(configurationFile);
+        try {
             properties.load(inputStream);
         } catch (IOException e) {
             log.error(e);
@@ -84,7 +85,8 @@ public class ConnectionPool {
     private BlockingQueue<Connection> createConnections() {
         if (freeConnections.isEmpty()) {
             while (freeConnections.size() < maxConnection) {
-                try(Connection connection = DriverManager.getConnection(url, user, password)) {
+                try {
+                    Connection connection = DriverManager.getConnection(url, user, password);
                     freeConnections.put(connection);
                 } catch (InterruptedException | SQLException e) {
                     log.warn(e);
